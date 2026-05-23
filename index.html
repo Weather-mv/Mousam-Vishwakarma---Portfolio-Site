@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mousam Vishwakarma — UI Motion Designer</title>
+    <meta name="description"
+        content="Portfolio of Mousam Vishwakarma, a UI Motion Designer specializing in micro-interactions, animated components, and Lottie systems." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mousam Vishwakarma — UI Motion Designer" />
+    <meta property="og:description"
+        content="I make interfaces feel alive. Crafting micro-interactions, animated components, and Lottie systems that turn static screens into experiences users remember." />
+    <meta property="og:url" content="https://mousam-portfolio.vercel.app" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mousam Vishwakarma — UI Motion Designer" />
+    <meta name="twitter:description"
+        content="I make interfaces feel alive. Crafting micro-interactions, animated components, and Lottie systems." />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="cursor" id="cursor">
+        <div class="cursor-ring" id="cursorRing"></div>
+        <div class="cursor-dot" id="cursorDot"></div>
+    </div>
+
+    <!-- NAV -->
+    <nav id="mainNav">
+        <div class="nav-left">
+            <span class="nav-name">Mousam Vishwakarma</span>
+            <span class="nav-role">UI Motion Designer</span>
+        </div>
+        <div class="nav-right">
+            <span class="nav-city">Indore ·</span>
+            <span id="navTime">--:-- --</span>
+            <span class="status-dot"></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-orb"></div>
+        <h1 class="hero-names">
+            <span class="hero-name-line">
+                <span class="hero-name-mousam">Mousam</span>
+            </span>
+            <span class="hero-divider"></span>
+            <span class="hero-name-line">
+                <span class="hero-name-vishwa">Vishwakarma</span>
+            </span>
+        </h1>
+        <p class="hero-roles">UI Motion Designer · Interaction Designer · Design Technologist</p>
+        <div class="hero-scroll">
+            <span class="hero-scroll-text">Scroll</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="container" id="mainContent">
+        <div class="bento">
+
+            <!-- Row 1 -->
+            <div class="row1">
+                <div class="card about-card reveal-left">
+                    <h2 class="card-label" id="aboutHeading">About</h2>
+                    <p class="about-text">I make interfaces <strong>feel alive.</strong> Crafting micro-interactions,
+                        animated components, and Lottie systems that turn static screens into experiences users
+                        remember.</p>
+                    <div class="about-footer">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Indore, MP — India &nbsp;·&nbsp; 3+ yrs experience
+                    </div>
+                </div>
+                <div class="card portrait-card reveal-right">
+                    <div class="portrait-placeholder">
+                        <div>
+                            <h2 class="portrait-label" id="portraitHeading">Portrait</h2>
+                            <div class="portrait-name">Mousam Vishwakarma</div>
+                            <div class="portrait-role-tag">UI Motion Designer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="row2">
+                <div class="card time-card reveal d1">
+                    <h2 class="card-label" id="localTimeHeading">Local Time</h2>
+                    <div class="time-city">Indore · <span id="timeDisplay">--:-- --</span></div>
+                    <div class="avail">
+                        <span class="status-dot"></span>
+                        Available for select work
+                    </div>
+                </div>
+                <div class="card resume-card reveal d2">
+                    <h2 class="card-label" id="resumeHeading">Resume</h2>
+                    <a class="dl-cv" id="resumeDownloadLinkText" href="Mousam_Vishwakarma_-_Ui_Motion_Designer.doc"
+                        download>Download CV</a>
+                    <div class="dl-meta">.doc · 30 KB</div>
+                    <div class="resume-bottom">
+                        <a href="Mousam_Vishwakarma_-_Ui_Motion_Designer.doc" id="resumeDownloadIconLink" download
+                            class="dl-icon" title="Download">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                            </svg>
+                        </a>
+                        <a href="#contact" id="resumeContactLink" class="arrow-icon" title="Contact">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+
+            <!-- Row 3: Stack -->
+            <div class="card stack-card reveal" id="stackCard">
+                <div class="stack-header">
+                    <h2 class="card-label" id="stackHeading" style="margin-bottom:0;">Stack &amp; Tools</h2>
+                    <span class="stack-names">Figma · After Effects · Lottie · Rive</span>
+                </div>
+                <div class="tools-row" id="toolsRow">
+                    <div class="tool-icon-box" id="toolFigma" title="Figma">
+                        <svg width="26" height="26" viewBox="0 0 38 57" fill="none">
+                            <path d="M19 28.5A9.5 9.5 0 1028.5 19 9.5 9.5 0 0019 28.5z" fill="#1ABCFE" />
+                            <path d="M9.5 47.5A9.5 9.5 0 0019 57V38H9.5a9.5 9.5 0 000 19z" fill="#0ACF83" />
+                            <path d="M9.5 28.5H19V9.5H9.5a9.5 9.5 0 000 19z" fill="#FF7262" />
+                            <path d="M9.5 9.5H19A9.5 9.5 0 009.5 0v9.5z" fill="#F24E1E" />
+                            <path d="M19 0h9.5A9.5 9.5 0 0019 9.5V0z" fill="#FF7262" />
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolAfterEffects" title="After Effects">
+                        <svg width="28" height="28" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="10" fill="#00005B" /><text x="25" y="34"
+                                text-anchor="middle" font-size="18" font-weight="700" font-family="sans-serif"
+                                fill="#9999FF">Ae</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolLottie" title="LottieFiles">
+                        <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="50" r="46" fill="#00C4B4" opacity=".15" stroke="#00C4B4"
+                                stroke-width="2" /><text x="50" y="62" text-anchor="middle" font-size="30"
+                                font-weight="700" font-family="sans-serif" fill="#00C4B4">L</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolRive" title="Rive">
+                        <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
+                            <rect width="100" height="100" rx="18" fill="#111" /><text x="50" y="65"
+                                text-anchor="middle" font-size="38" font-weight="700" font-family="sans-serif"
+                                fill="#e0e0e0">Rv</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolProtoPie" title="ProtoPie">
+                        <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
+                            <rect width="100" height="100" rx="18" fill="#1a0010" /><text x="50" y="65"
+                                text-anchor="middle" font-size="34" font-weight="700" font-family="sans-serif"
+                                fill="#ff5580">Pp</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolIllustrator" title="Illustrator">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#330000" /><text x="25" y="35"
+                                text-anchor="middle" font-size="17" font-weight="700" font-family="sans-serif"
+                                fill="#FF9A00">Ai</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolPhotoshop" title="Photoshop">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#001E36" /><text x="25" y="35"
+                                text-anchor="middle" font-size="17" font-weight="700" font-family="sans-serif"
+                                fill="#31A8FF">Ps</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolBlender" title="Blender">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#111" /><text x="25" y="35" text-anchor="middle"
+                                font-size="16" font-weight="700" font-family="sans-serif" fill="#e87d0d">Bl</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolAdobeXD" title="Adobe XD">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#2D001D" /><text x="25" y="35"
+                                text-anchor="middle" font-size="15" font-weight="700" font-family="sans-serif"
+                                fill="#FF61F6">XD</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolHTML5" title="HTML5">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#1a0800" /><text x="25" y="34"
+                                text-anchor="middle" font-size="14" font-weight="700" font-family="sans-serif"
+                                fill="#E44D26">HTML</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolCSS3" title="CSS3">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#000a18" /><text x="25" y="34"
+                                text-anchor="middle" font-size="16" font-weight="700" font-family="sans-serif"
+                                fill="#1572B6">CSS</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolJS" title="JavaScript">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#1a1600" /><text x="25" y="35"
+                                text-anchor="middle" font-size="16" font-weight="700" font-family="sans-serif"
+                                fill="#F7DF1E">JS</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolFramer" title="Framer">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#111" />
+                            <path d="M13 10h24v14H25L13 10zM13 24h12l12 14H13V24z" fill="white" />
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolJira" title="Jira">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#000a1a" /><text x="25" y="35"
+                                text-anchor="middle" font-size="16" font-weight="700" font-family="sans-serif"
+                                fill="#0052CC">Jr</text>
+                        </svg>
+                    </div>
+                    <div class="tool-icon-box" id="toolSlack" title="Slack">
+                        <svg width="26" height="26" viewBox="0 0 50 50" fill="none">
+                            <rect width="50" height="50" rx="8" fill="#0a000b" /><text x="25" y="35"
+                                text-anchor="middle" font-size="15" font-weight="700" font-family="sans-serif"
+                                fill="#e01e5a">Sl</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 4: Work + Skills -->
+            <div class="row4">
+                <div class="card work-card reveal-left d1">
+                    <div class="work-header">
+                        <h2 class="card-label" id="workHeading" style="margin-bottom:0;">Selected Work</h2>
+                        <a href="#" id="workArrowLink" class="arrow-link"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5">
+                                <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg></a>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-item-header">
+                            <div>
+                                <div class="work-title">Zero Orbit Labs</div>
+                                <div class="work-desc">Company Website — End-to-end design + code</div>
+                            </div>
+                            <a href="#" id="workZeroOrbitLink" class="arrow-link"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                                </svg></a>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Figma</span><span class="tag">HTML5</span><span
+                                class="tag">CSS3</span><span class="tag">JS</span><span class="tag">Motion</span>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-item-header">
+                            <div>
+                                <div class="work-title">Fairshare</div>
+                                <div class="work-desc">Bill-Splitting App — Product Design</div>
+                            </div>
+                            <a href="#" id="workFairshareLink" class="arrow-link"><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                                </svg></a>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Figma</span><span class="tag">UX Research</span><span
+                                class="tag">Interaction</span><span class="tag">Prototyping</span>
+                        </div>
+                    </div>
+                    <div class="work-more">+ more case studies coming soon</div>
+                </div>
+
+                <div class="card skills-card reveal-right d1">
+                    <h2 class="card-label" id="skillsHeading">Skills</h2>
+                    <div class="skills-section">
+                        <div class="skills-title">Motion &amp; Animation</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">After Effects</span><span class="skill-tag">LottieFiles</span><span
+                                class="skill-tag">Rive</span><span class="skill-tag">CSS Animations</span><span
+                                class="skill-tag">Micro-interactions</span><span class="skill-tag">Easing
+                                Curves</span><span class="skill-tag">Spring Physics</span>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <div class="skills-title">Interaction &amp; UI</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Figma</span><span class="skill-tag">Smart Animate</span><span
+                                class="skill-tag">Variables</span><span class="skill-tag">Dev Mode</span><span
+                                class="skill-tag">Prototyping</span><span class="skill-tag">Design Systems</span><span
+                                class="skill-tag">ProtoPie</span><span class="skill-tag">Framer</span><span
+                                class="skill-tag">WCAG</span>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <div class="skills-title">Front-End</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3 (Flex, Grid)</span><span
+                                class="skill-tag">Keyframes</span><span class="skill-tag">JavaScript ES6+</span><span
+                                class="skill-tag">Scroll Animations</span><span class="skill-tag">Responsive Web</span>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <div class="skills-title">Tools</div>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Adobe Illustrator</span><span
+                                class="skill-tag">Photoshop</span><span class="skill-tag">Blender</span><span
+                                class="skill-tag">Adobe XD</span><span class="skill-tag">Jira</span><span
+                                class="skill-tag">Slack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 5: Experience -->
+            <div class="card exp-card reveal">
+                <div class="exp-header">
+                    <h2 class="card-label" id="experienceHeading" style="margin-bottom:0;">Experience</h2>
+                    <span style="font-size:12px;color:var(--muted);">4 roles</span>
+                </div>
+                <div class="exp-grid">
+                    <div class="exp-col reveal d1">
+                        <div class="exp-period"><span class="exp-dot active"></span> Mar 2026 — Present</div>
+                        <div class="exp-role">UI Motion Designer</div>
+                        <div class="exp-company">Alphanext Technology</div>
+                        <div class="exp-location">Indore, MP</div>
+                        <ul class="exp-points">
+                            <li>Designing hero section UI + motion graphics to maximise engagement using animation
+                                driven storytelling.</li>
+                            <li>Producing product demo videos that communicate value and drive conversions.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-col reveal d2">
+                        <div class="exp-period"><span class="exp-dot"></span> Jul 2025 — Mar 2026</div>
+                        <div class="exp-role">Motion &amp; UI Designer</div>
+                        <div class="exp-company">Vaidik Eduservices Pvt. Ltd</div>
+                        <div class="exp-location">Remote</div>
+                        <ul class="exp-points">
+                            <li>Designed UI animation systems — micro-interactions, onboarding flows, state-based
+                                components — improving engagement an estimated 25%.</li>
+                            <li>Built a Lottie-based animated component library with easing + trigger state specs for
+                                accurate developer handoff.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-col reveal d3">
+                        <div class="exp-period"><span class="exp-dot"></span> Sep — Nov 2024</div>
+                        <div class="exp-role">UI/UX Designer</div>
+                        <div class="exp-company">Vected Technologies</div>
+                        <div class="exp-location">Indore, MP</div>
+                        <ul class="exp-points">
+                            <li>Coded responsive front-end (HTML5, CSS3, JS) with scroll animations and CSS transitions.
+                            </li>
+                            <li>Built a Figma design system cutting inconsistencies by 40%; resolved 6+ critical UX
+                                issues via usability testing.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-col reveal d4">
+                        <div class="exp-period"><span class="exp-dot"></span> Jan — Feb 2023</div>
+                        <div class="exp-role">Junior UI Designer</div>
+                        <div class="exp-company">WoodApple Resources Pvt. Ltd</div>
+                        <div class="exp-location">Indore, MP</div>
+                        <ul class="exp-points">
+                            <li>Designed UI animations — button states, loading indicators, hover effects — improving
+                                engagement and reducing bounce.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 6: Contact + Education -->
+            <div class="row6">
+                <div class="card contact-card reveal-left d1" id="contact">
+                    <h2 class="card-label" id="contactHeading">Contact</h2>
+                    <div class="contact-heading">Got a project where motion matters?<br />Let's build something
+                        memorable.</div>
+                    <div class="contact-btns">
+                        <a href="mailto:mousam07999@gmail.com" id="contactEmailBtn" class="contact-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            mousam07999@gmail.com
+                            <span class="ext-arrow">↗</span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" id="contactLinkedinBtn" class="contact-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="tel:+917999336045" id="contactPhoneBtn" class="contact-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.96-.96a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.26z" />
+                            </svg>
+                            +91 7999336045
+                        </a>
+                    </div>
+                </div>
+                <div class="card edu-card reveal-right d2">
+                    <h2 class="card-label" id="educationHeading">Education</h2>
+                    <div class="edu-degree">B.Tech — Computer Science Engineering</div>
+                    <div class="edu-inst">Shivajirao Kadam Institute of Technology &amp; Management, Indore</div>
+                    <div class="edu-grad">Graduated · May 2025</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <span>© 2026 Mousam Vishwakarma · Crafted with motion in Indore, India</span>
+        <div class="footer-links">
+            <a href="mailto:mousam07999@gmail.com" id="footerEmailLink">mousam07999@gmail.com</a>
+            <a href="https://linkedin.com" target="_blank" id="footerLinkedinLink">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

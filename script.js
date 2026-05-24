@@ -1,3 +1,50 @@
+// ── DYNAMIC GLOBAL ANIMATIONS (SCROLL SKEW & PROGRESS BAR) ─
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Inject Scroll Progress Bar
+    const progress = document.createElement('div');
+    progress.className = 'scroll-progress';
+    progress.id = 'scrollProgress';
+    document.body.prepend(progress);
+
+    // 2. Scroll Progress Bar Update
+    window.addEventListener('scroll', () => {
+        const winScroll = window.scrollY;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        const progressEl = document.getElementById('scrollProgress');
+        if (progressEl) progressEl.style.width = scrolled + '%';
+    }, { passive: true });
+
+    // 3. Dynamic Scroll-Velocity Skewing on Bento content
+    let lastScrollY = window.scrollY;
+    let skewTarget = 0;
+    let skewCurrent = 0;
+    const skewElement = document.getElementById('mainContent') || document.querySelector('.container');
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const diff = currentScrollY - lastScrollY;
+        lastScrollY = currentScrollY;
+        
+        // Cap the skew velocity target (subtle tilt)
+        skewTarget = Math.max(-5, Math.min(5, diff * 0.12));
+    }, { passive: true });
+
+    (function skewLoop() {
+        // Lerp towards target skew
+        skewCurrent += (skewTarget - skewCurrent) * 0.085;
+        // Decay target skew towards 0
+        skewTarget += (0 - skewTarget) * 0.085;
+        
+        if (skewElement) {
+            // Apply the skewY transform
+            skewElement.style.transform = `skewY(${skewCurrent.toFixed(3)}deg)`;
+        }
+        
+        requestAnimationFrame(skewLoop);
+    })();
+});
+
 // ── SMOOTH CURSOR (lerp ring) ───────────────────────────
 const dot = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
@@ -18,12 +65,29 @@ hoverEls.forEach(el => {
     el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
 });
 
-// ── CARD MOUSE-FOLLOW RADIAL HIGHLIGHT ─────────────────
+// ── CARD MOUSE-FOLLOW RADIAL HIGHLIGHT & 3D TILT ───────
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        card.style.setProperty('--mx', x + 'px');
+        card.style.setProperty('--my', y + 'px');
+        
+        // Dynamic Apple-like 3D Card Tilt
+        const xc = r.width / 2;
+        const yc = r.height / 2;
+        const dx = x - xc;
+        const dy = y - yc;
+        const rx = -(dy / yc) * 4; // Max 4 degrees rotation on X axis
+        const ry = (dx / xc) * 4;  // Max 4 degrees rotation on Y axis
+        card.style.setProperty('--rx', rx + 'deg');
+        card.style.setProperty('--ry', ry + 'deg');
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
     });
 });
 
@@ -34,13 +98,36 @@ window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY
 // ── CLOCK IST ──────────────────────────────────────────
 function tick() {
     const ist = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-    let h = ist.getHours(), m = ist.getMinutes();
-    const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
-    const s = h + ':' + String(m).padStart(2, '0') + ' ' + ap;
-    document.getElementById('navTime').textContent = s;
-    document.getElementById('timeDisplay').textContent = s;
+    const h = ist.getHours();
+    const m = ist.getMinutes();
+    const s = ist.getSeconds();
+    
+    // Digital Time formatting
+    const ap = h >= 12 ? 'PM' : 'AM';
+    const displayH = h % 12 || 12;
+    const displayTime = displayH + ':' + String(m).padStart(2, '0') + ' ' + ap;
+    
+    const navTimeEl = document.getElementById('navTime');
+    const timeDisplayEl = document.getElementById('timeDisplay');
+    if (navTimeEl) navTimeEl.textContent = displayTime;
+    if (timeDisplayEl) timeDisplayEl.textContent = displayTime;
+    
+    // Analog Clock Hand Rotations
+    const hrHand = document.getElementById('clockHour');
+    const minHand = document.getElementById('clockMin');
+    const secHand = document.getElementById('clockSec');
+    
+    if (hrHand && minHand && secHand) {
+        const hrDeg = ((h % 12) * 30) + (m * 0.5);
+        const minDeg = (m * 6) + (s * 0.1);
+        const secDeg = s * 6;
+        
+        hrHand.style.transform = `rotate(${hrDeg}deg)`;
+        minHand.style.transform = `rotate(${minDeg}deg)`;
+        secHand.style.transform = `rotate(${secDeg}deg)`;
+    }
 }
-tick(); setInterval(tick, 10000);
+tick(); setInterval(tick, 1000);
 
 // ── INTERSECTION OBSERVER ──────────────────────────────
 const io = new IntersectionObserver(entries => {

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Mousam Vishwakarma</title>
+    <meta name="description"
+        content="Showcase of live projects, UI/UX designs, and motion design videos by Mousam Vishwakarma, UI Motion Designer." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Projects — Mousam Vishwakarma" />
+    <meta property="og:description"
+        content="A gallery of live projects, UI/UX designs, and motion design work. Interactive prototypes and animations." />
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- pdf.js library for secure local rendering of design PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+
+<body class="projects-page">
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor">
+        <div class="cursor-ring" id="cursorRing"></div>
+        <div class="cursor-dot" id="cursorDot"></div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav id="mainNav">
+        <div class="nav-left">
+            <a href="index.html" class="nav-back-btn" id="navBackBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px; transform: translateY(1px);">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back to Home</span>
+            </a>
+            <span class="nav-divider" style="opacity: 0.15; margin: 0 4px;">|</span>
+            <span class="nav-name">Mousam Vishwakarma</span>
+        </div>
+        <div class="nav-right">
+            <span class="nav-city">Indore ·</span>
+            <span id="navTime">--:-- --</span>
+            <span class="status-dot"></span>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container" style="padding-top: 130px;">
+        
+        <!-- HEADER -->
+        <header class="projects-header reveal">
+            <h1 class="projects-title">Selected Works</h1>
+            <p class="projects-subtitle">A curated collection of UI/UX designs, motion graphics, interactive prototypes, and front-end development.</p>
+        </header>
+
+        <!-- FILTERS -->
+        <div class="filter-wrapper reveal d1">
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-btn active" data-filter="all" id="filterAll">All Projects</button>
+                <button class="filter-btn" data-filter="uiux" id="filterUiUx">UI/UX Design</button>
+                <button class="filter-btn" data-filter="motion" id="filterMotion">Motion Design</button>
+                <button class="filter-btn" data-filter="webdev" id="filterWebDev">Web &amp; Dev</button>
+            </div>
+            <div class="projects-count" id="projectsCount">Showing 13 projects</div>
+        </div>
+
+        <!-- PROJECTS GRID -->
+        <div class="projects-grid reveal d2" id="projectsGrid">
+            
+            <!-- Project 1: Zero Orbit Labs -->
+            <div class="project-card card" data-id="zero-orbit" data-category="webdev uiux">
+                <div class="project-media">
+                    <video src="assets/videos/zero-orbit.mp4" poster="assets/images/zero-orbit.png" loop muted playsinline></video>
+                    <div class="play-overlay">
+                        <div class="play-icon-box">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="project-badge">Featured · Web Dev</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Zero Orbit Labs</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Company Website Showcase</h3>
+                    <p class="project-card-desc">End-to-end design and front-end development with rich CSS/JS transitions and high-performance layouts.</p>
+                    <div class="tags">
+                        <span class="tag">Figma</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JS</span><span class="tag">Motion</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Fairshare -->
+            <div class="project-card card" data-id="fairshare" data-category="uiux">
+                <div class="project-media">
+                    <img src="assets/images/fairshare.png" alt="Fairshare Mobile UI Mockup" class="project-thumbnail" />
+                    <span class="project-badge">UI/UX Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Fairshare App</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-card-title">Bill-Splitting Experience</h3>
+                    <p class="project-card-desc">Mobile application UX research, interactive logic, dashboard analytics, and dev-ready UI design systems.</p>
+                    <div class="tags">
+                        <span class="tag">Figma</span><span class="tag">UX Research</span><span class="tag">Interaction</span><span class="tag">Prototyping</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Project 7: EMR Healthcare Suite -->
+            <div class="project-card card" data-id="emr-healthcare" data-category="uiux">
+                <div class="project-media">
+                    <img src="assets/images/emr_preview.png" alt="EMR Healthcare Suite Dashboard Mockup" class="project-thumbnail" />
+                    <span class="project-badge">UI/UX Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Hospital Network</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">EMR Healthcare Product</h3>
+                    <p class="project-card-desc">Comprehensive medical dashboard interface system designed to optimize doctor clinical workflow speeds.</p>
+                    <div class="tags">
+                        <span class="tag">Figma</span><span class="tag">UX Research</span><span class="tag">Information Architecture</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: Alpa Labs Corporate Portal -->
+            <div class="project-card card" data-id="alpa-labs" data-category="uiux">
+                <div class="project-media">
+                    <img src="assets/images/alpa_preview.png" alt="Alpa Labs Corporate Portal Mockup" class="project-thumbnail" />
+                    <span class="project-badge">UI/UX Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Alpa Labs</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Alpa Labs Corporate Site</h3>
+                    <p class="project-card-desc">Redesigned corporate hub integrating manufacturing facilities pipelines, investor filings, and market data.</p>
+                    <div class="tags">
+                        <span class="tag">Figma</span><span class="tag">UI/UX</span><span class="tag">Responsive</span><span class="tag">Corporate Portal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: ChatSpark Messenger -->
+            <div class="project-card card" data-id="chatspark" data-category="uiux">
+                <div class="project-media">
+                    <img src="assets/images/chatspark_preview.png" alt="ChatSpark Mobile App UI Mockup" class="project-thumbnail" />
+                    <span class="project-badge">Mobile UI/UX</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Mobile UI R&D</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">ChatSpark Chat Client</h3>
+                    <p class="project-card-desc">Mobile chat UI focusing on bubble layout structures, dynamic unread badge triggers, and dark/light themes.</p>
+                    <div class="tags">
+                        <span class="tag">Figma</span><span class="tag">Mobile UI</span><span class="tag">Visual Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10: Parkit Parking App -->
+            <div class="project-card card" data-id="parkit" data-category="uiux">
+                <div class="project-media">
+                    <img src="assets/images/parkit_preview.png" alt="Parkit Mobile App UI Mockup" class="project-thumbnail" />
+                    <span class="project-badge">Mobile UI/UX</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">IoT Mobility App</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Parkit Parking Spaces Booking</h3>
+                    <p class="project-card-desc">Mobile user flows and maps interfacing designed to help drivers find, reserve, and navigate to parking slots.</p>
+                    <div class="tags">
+                        <span class="tag">Figma</span><span class="tag">UX Research</span><span class="tag">Mobile UI</span><span class="tag">Navigation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11: Admin Dashboard System -->
+            <div class="project-card card" data-id="dashboard-designs" data-category="uiux">
+                <div class="project-media">
+                    <img src="assets/images/dashboard_preview.png" alt="Admin Dashboard System Mockup" class="project-thumbnail" />
+                    <span class="project-badge">UI/UX Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">SaaS Dashboard</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Admin Dashboard designs</h3>
+                    <p class="project-card-desc">Tactile admin tracking metrics layouts, sidebar structures, and analytical visualizations design cases.</p>
+                    <div class="tags">
+                        <span class="tag">Figma</span><span class="tag">Dashboard Design</span><span class="tag">Data Viz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: Motion Design - Case 1 -->
+            <div class="project-card card" data-id="motion-1" data-category="motion">
+                <div class="project-media">
+                    <img src="https://img.youtube.com/vi/CdDdJzvh_QU/hqdefault.jpg" alt="Motion Design Case 1 Thumbnail" class="project-thumbnail" />
+                    <div class="play-overlay">
+                        <div class="play-icon-box">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="project-badge">Motion Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Self / R&D</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Motion Design - Case 1</h3>
+                    <p class="project-card-desc">An exploration of complex visual choreography, focusing on smooth ease curves and timing synchronizations.</p>
+                    <div class="tags">
+                        <span class="tag">After Effects</span><span class="tag">Illustrator</span><span class="tag">Premiere</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: Motion Design - Case 2 -->
+            <div class="project-card card" data-id="motion-2" data-category="motion">
+                <div class="project-media">
+                    <img src="https://img.youtube.com/vi/ZMTBt1dSMco/hqdefault.jpg" alt="Motion Design Case 2 Thumbnail" class="project-thumbnail" />
+                    <div class="play-overlay">
+                        <div class="play-icon-box">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="project-badge">Motion Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Self / R&D</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Motion Design - Case 2</h3>
+                    <p class="project-card-desc">Micro-interactions, spring physics, button states, and screen transitions for mobile applications.</p>
+                    <div class="tags">
+                        <span class="tag">After Effects</span><span class="tag">Figma</span><span class="tag">Lottie</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10: Motion Design - Case 3 -->
+            <div class="project-card card" data-id="motion-3" data-category="motion">
+                <div class="project-media">
+                    <img src="https://img.youtube.com/vi/rn4no82M-cM/hqdefault.jpg" alt="Motion Design Case 3 Thumbnail" class="project-thumbnail" />
+                    <div class="play-overlay">
+                        <div class="play-icon-box">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="project-badge">Motion Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Self / R&D</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Motion Design - Case 3</h3>
+                    <p class="project-card-desc">Rhythmic, high-energy typography reel focusing on audio-reactive keyframes and vector motion graphics.</p>
+                    <div class="tags">
+                        <span class="tag">After Effects</span><span class="tag">Audition</span><span class="tag">Illustrator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11: Product Demo - Case 1 -->
+            <div class="project-card card" data-id="demo-1" data-category="motion">
+                <div class="project-media">
+                    <img src="https://img.youtube.com/vi/SjHOh26At1I/hqdefault.jpg" alt="Product Demo Case 1 Thumbnail" class="project-thumbnail" />
+                    <div class="play-overlay">
+                        <div class="play-icon-box">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="project-badge">Motion Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Various Clients</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Product Demo - Case 1</h3>
+                    <p class="project-card-desc">Clean, story-driven product demo showcasing SaaS dashboard usage workflows and data visualization rendering.</p>
+                    <div class="tags">
+                        <span class="tag">After Effects</span><span class="tag">Premiere</span><span class="tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 12: Product Demo - Case 2 -->
+            <div class="project-card card" data-id="demo-2" data-category="motion">
+                <div class="project-media">
+                    <img src="https://img.youtube.com/vi/5t2SbQQ2SmU/hqdefault.jpg" alt="Product Demo Case 2 Thumbnail" class="project-thumbnail" />
+                    <div class="play-overlay">
+                        <div class="play-icon-box">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="project-badge">Motion Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">IoT Mobility Client</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Product Demo - Case 2</h3>
+                    <p class="project-card-desc">Mobile booking workflows and payments demo using floating UI mockups and 3D device framing.</p>
+                    <div class="tags">
+                        <span class="tag">After Effects</span><span class="tag">Figma</span><span class="tag">Cinema 4D</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 13: Product Demo - Case 3 -->
+            <div class="project-card card" data-id="demo-3" data-category="motion">
+                <div class="project-media">
+                    <img src="https://img.youtube.com/vi/wFjTq-WqFEE/hqdefault.jpg" alt="Product Demo Case 3 Thumbnail" class="project-thumbnail" />
+                    <div class="play-overlay">
+                        <div class="play-icon-box">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="project-badge">Motion Design</span>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta-row">
+                        <span class="project-client">Alphanext Tech</span>
+                        <span class="project-year">2026</span>
+                    </div>
+                    <h3 class="project-card-title">Product Demo - Case 3</h3>
+                    <p class="project-card-desc">SaaS platform workspace collaborative editing highlights and team dashboard walkthroughs.</p>
+                    <div class="tags">
+                        <span class="tag">After Effects</span><span class="tag">Premiere</span><span class="tag">UI Mockups</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CALL TO ACTION -->
+        <section class="projects-cta card reveal" style="margin-top: 80px; text-align: center; padding: 48px 32px;">
+            <h2 class="card-label">Let's Collaborate</h2>
+            <div class="cta-heading" style="font-size: clamp(20px, 2.5vw, 30px); font-weight: 500; margin-bottom: 24px; color: var(--white);">Have a project where motion and premium UI matter?</div>
+            <a href="index.html#contact" class="contact-btn" id="ctaContactBtn" style="margin: 0 auto; display: inline-flex;">
+                Let's Build Something Memorable
+                <span style="opacity: 0.6; margin-left: 6px;">↗</span>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>© 2026 Mousam Vishwakarma · Crafted with motion in Indore, India</span>
+        <div class="footer-links">
+            <a href="mailto:mousam07999@gmail.com" id="footerEmailLink">mousam07999@gmail.com</a>
+            <a href="https://linkedin.com" target="_blank" id="footerLinkedinLink">LinkedIn</a>
+        </div>
+    </footer>
+
+    <!-- CASE STUDY OVERLAY MODAL -->
+    <div class="modal-overlay" id="projectModal" aria-hidden="true" role="dialog">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Populated dynamically via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="script.js" defer></script>
+    <script src="projects.js" defer></script>
+</body>
+
+</html>

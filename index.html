@@ -73,8 +73,8 @@
     <main class="container" id="mainContent">
         <div class="bento">
 
-            <!-- Row 1 -->
-            <div class="row1">
+            <!-- Top Bento Grid Section -->
+            <div class="top-grid">
                 <div class="card about-card reveal-left">
                     <h2 class="card-label" id="aboutHeading">About</h2>
                     <p class="about-text">I make interfaces <strong>feel alive.</strong> Crafting micro-interactions,
@@ -89,21 +89,36 @@
                     </div>
                 </div>
                 <div class="card portrait-card reveal-right">
-                    <div class="portrait-placeholder">
-                        <div>
+                    <img src="assets/images/portrait.png" alt="Mousam Vishwakarma" class="portrait-img" />
+                    <div class="portrait-overlay">
+                        <div class="portrait-info">
                             <h2 class="portrait-label" id="portraitHeading">Portrait</h2>
                             <div class="portrait-name">Mousam Vishwakarma</div>
                             <div class="portrait-role-tag">UI Motion Designer</div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="row2">
                 <div class="card time-card reveal d1">
-                    <h2 class="card-label" id="localTimeHeading">Local Time</h2>
-                    <div class="time-city">Indore · <span id="timeDisplay">--:-- --</span></div>
+                    <div class="time-card-content">
+                        <div class="time-info">
+                            <h2 class="card-label" id="localTimeHeading">Local Time</h2>
+                            <div class="time-city">Indore · <span id="timeDisplay">--:-- --</span></div>
+                        </div>
+                        <div class="time-visual">
+                            <div class="analog-clock" aria-label="Analog Clock representing local time in Indore">
+                                <div class="clock-face">
+                                    <div class="clock-tick clock-tick-12"></div>
+                                    <div class="clock-tick clock-tick-3"></div>
+                                    <div class="clock-tick clock-tick-6"></div>
+                                    <div class="clock-tick clock-tick-9"></div>
+                                    <div class="clock-hand hour-hand" id="clockHour"></div>
+                                    <div class="clock-hand minute-hand" id="clockMin"></div>
+                                    <div class="clock-hand second-hand" id="clockSec"></div>
+                                    <div class="clock-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="avail">
                         <span class="status-dot"></span>
                         Available for select work
@@ -128,7 +143,6 @@
                         </a>
                     </div>
                 </div>
-                <div></div>
             </div>
 
             <!-- Row 3: Stack -->
@@ -251,44 +265,70 @@
                 <div class="card work-card reveal-left d1">
                     <div class="work-header">
                         <h2 class="card-label" id="workHeading" style="margin-bottom:0;">Selected Work</h2>
-                        <a href="#" id="workArrowLink" class="arrow-link"><svg viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="1.5">
+                        <a href="projects.html" id="workArrowLink" class="arrow-link" title="View all projects"><svg
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M7 17L17 7M17 7H7M17 7v10" />
                             </svg></a>
                     </div>
                     <div class="work-item">
                         <div class="work-item-header">
                             <div>
-                                <div class="work-title">Zero Orbit Labs</div>
-                                <div class="work-desc">Company Website — End-to-end design + code</div>
+                                <div class="work-title">EMR Healthcare Suite</div>
+                                <div class="work-desc">Hospital Network — UI/UX Design System</div>
                             </div>
-                            <a href="#" id="workZeroOrbitLink" class="arrow-link"><svg viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="1.5">
-                                    <path d="M7 17L17 7M17 7H7M17 7v10" />
-                                </svg></a>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">Figma</span><span class="tag">HTML5</span><span
-                                class="tag">CSS3</span><span class="tag">JS</span><span class="tag">Motion</span>
-                        </div>
-                    </div>
-                    <div class="work-item">
-                        <div class="work-item-header">
-                            <div>
-                                <div class="work-title">Fairshare</div>
-                                <div class="work-desc">Bill-Splitting App — Product Design</div>
-                            </div>
-                            <a href="#" id="workFairshareLink" class="arrow-link"><svg viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="1.5">
+                            <a href="projects.html?project=emr-healthcare" id="workEMRLink" class="arrow-link"
+                                title="View project details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
                                     <path d="M7 17L17 7M17 7H7M17 7v10" />
                                 </svg></a>
                         </div>
                         <div class="tags">
                             <span class="tag">Figma</span><span class="tag">UX Research</span><span
-                                class="tag">Interaction</span><span class="tag">Prototyping</span>
+                                class="tag">Information Architecture</span>
                         </div>
                     </div>
-                    <div class="work-more">+ more case studies coming soon</div>
+                    <div class="work-item">
+                        <div class="work-item-header">
+                            <div>
+                                <div class="work-title">Motion Design - Case 2</div>
+                                <div class="work-desc">Self / R&D — UI Micro-interactions &amp; Spring Physics</div>
+                            </div>
+                            <a href="projects.html?project=motion-2" id="workMotionLink" class="arrow-link"
+                                title="View project details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                                </svg></a>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">After Effects</span><span class="tag">Figma</span><span
+                                class="tag">Lottie</span>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-item-header">
+                            <div>
+                                <div class="work-title">Alpa Labs Corporate Portal</div>
+                                <div class="work-desc">Alpa Laboratories Ltd. — Corporate Web Portal &amp; UI/UX</div>
+                            </div>
+                            <a href="projects.html?project=alpa-labs" id="workAlpaLink" class="arrow-link"
+                                title="View project details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                                </svg></a>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Figma</span><span class="tag">UI/UX</span><span
+                                class="tag">Corporate Branding</span><span class="tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="work-more">
+                        <a href="projects.html" id="viewAllProjectsLink"
+                            style="color: var(--white); text-decoration: none; display: flex; align-items: center; justify-content: space-between; font-weight: 500; cursor: none;">
+                            <span>View all live projects</span>
+                            <span class="arrow-indicator"
+                                style="font-size: 14px; transition: transform .3s var(--ease-spring);">→</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="card skills-card reveal-right d1">

@@ -3,10 +3,30 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import BentoCard from '../components/BentoCard';
 import AnalogClock from '../components/AnalogClock';
+import PDFViewer from '../components/PDFViewer';
 
 export default function Home() {
   const [time, setTime] = useState('--:-- --');
+  const [showResumePreview, setShowResumePreview] = useState(false);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (showResumePreview) {
+      document.body.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setShowResumePreview(false);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [showResumePreview]);
 
   useEffect(() => {
     // 1. Digital clock updater (IST) for local time card
@@ -166,12 +186,22 @@ export default function Home() {
 
             <BentoCard className="resume-card reveal d2" id="resumeCard">
               <h2 className="card-label" id="resumeHeading">Resume</h2>
-              <a className="dl-cv" id="resumeDownloadLinkText" href="Mousam_Vishwakarma_-_Ui_Motion_Designer.doc" download>
-                Download CV
-              </a>
-              <div className="dl-meta">.doc · 30 KB</div>
+              <div>
+                <a className="dl-cv" id="resumeDownloadLinkText" href="https://res.cloudinary.com/dk8c2tqwo/image/upload/v1781786098/Mousam_Vishwakarma_UIUXDesigner_buefmq.pdf" target="_blank" rel="noopener noreferrer">
+                  Download CV
+                </a>
+                <button 
+                  className="preview-cv-btn" 
+                  id="resumePreviewBtn"
+                  onClick={() => setShowResumePreview(true)}
+                  title="Preview CV"
+                >
+                  Preview Resume
+                </button>
+              </div>
+              <div className="dl-meta">PDF</div>
               <div className="resume-bottom">
-                <a href="Mousam_Vishwakarma_-_Ui_Motion_Designer.doc" id="resumeDownloadIconLink" download className="dl-icon" title="Download">
+                <a href="https://res.cloudinary.com/dk8c2tqwo/image/upload/v1781786098/Mousam_Vishwakarma_UIUXDesigner_buefmq.pdf" id="resumeDownloadIconLink" target="_blank" rel="noopener noreferrer" className="dl-icon" title="Open Resume">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
                   </svg>
@@ -511,6 +541,21 @@ export default function Home() {
 
         </div>
       </main>
+
+      {showResumePreview && (
+        <div className="pdf-lightbox open" onContextMenu={(e) => e.preventDefault()}>
+          <button className="pdf-lightbox-close" onClick={() => setShowResumePreview(false)} aria-label="Close Fullscreen View">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '20px', height: '20px' }}>
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <div className="pdf-lightbox-content" id="pdfLightboxContent">
+            <PDFViewer pdfUrl="https://res.cloudinary.com/dk8c2tqwo/image/upload/v1781786098/Mousam_Vishwakarma_UIUXDesigner_buefmq.pdf" isHighRes={true} containerId="lightboxCanvasList" />
+          </div>
+          <div className="pdf-lightbox-hint">Scroll down to view more pages · Right-click is disabled for security</div>
+        </div>
+      )}
     </>
   );
 }

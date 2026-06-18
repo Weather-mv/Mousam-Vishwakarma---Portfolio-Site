@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
+import CustomCursor from './components/CustomCursor';
 
 // ── SCROLL TO TOP ROUTE TRANSITION ─────────────────────
 function ScrollToTop() {
@@ -53,6 +54,7 @@ export default function App() {
 
   return (
     <Router>
+      <CustomCursor />
       <ScrollToTop />
       <ScrollProgress />
       <Navbar theme={theme} toggleTheme={toggleTheme} />

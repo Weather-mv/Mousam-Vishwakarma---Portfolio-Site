@@ -110,7 +110,7 @@ export default function Projects() {
             </button>
           </div>
           <div className="projects-count" id="projectsCount">
-            Showing {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
+            {`Showing ${filteredProjects.length} project${filteredProjects.length !== 1 ? 's' : ''}`}
           </div>
         </div>
 

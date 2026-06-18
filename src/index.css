@@ -358,6 +358,8 @@ nav.scrolled {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px 80px;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .bento {
@@ -697,6 +699,29 @@ nav.scrolled {
     margin-top: 8px;
     text-decoration: none;
     display: block;
+}
+
+.preview-cv-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--btn-hover-bg);
+    border: 2px solid var(--white);
+    border-radius: 8px;
+    letter-spacing: -0.01em;
+    margin-top: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.preview-cv-btn:hover {
+    background: var(--white);
+    color: var(--bg);
+    transform: scale(1.05);
 }
 
 .dl-meta {
@@ -1281,6 +1306,75 @@ footer {
         align-self: center;
         margin-left: 0;
     }
+}
+
+/* ── CUSTOM CURSOR ─────────────────────────────────────── */
+body {
+    cursor: none;
+}
+a, button, [role="button"], .card, .tool-icon-box, .skill-tag, .tag, .contact-btn, .dl-icon, .arrow-icon, .arrow-link, .dl-cv, .pdf-overlay-trigger {
+    cursor: none;
+}
+
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+}
+
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    border-radius: 50%;
+    background: var(--white);
+    pointer-events: none;
+    z-index: 100000;
+    will-change: transform;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    margin-left: -16px;
+    margin-top: -16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--cursor-ring-border);
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+    opacity: 0;
+    transition: width 0.35s var(--ease-spring), height 0.35s var(--ease-spring), margin 0.35s var(--ease-spring), border-color 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hovering state on interactive elements */
+.cursor-ring.hovering {
+    width: 48px;
+    height: 48px;
+    margin-left: -24px;
+    margin-top: -24px;
+    border-color: var(--cursor-ring-hover-border);
+    background-color: var(--cursor-ring-hover-bg);
+}
+
+.cursor-ring-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 0.25s ease;
 }
 
 /* ── TOUCH & MOBILE DEVICE CURSOR RESTORATION ────────────────── */

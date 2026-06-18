@@ -127,9 +127,7 @@ export default function Home() {
             <BentoCard className="about-card reveal-left" id="aboutCard">
               <h2 className="card-label" id="aboutHeading">About</h2>
               <p className="about-text">
-                I make interfaces <strong>feel alive.</strong> Crafting micro-interactions,
-                animated components, and Lottie systems that turn static screens into experiences users
-                remember.
+                I design intuitive, user-centered interfaces that blend <strong>visual elegance with functional delight.</strong> Bridging the gap between wireframes, UX research, and high-fidelity motion to craft seamless digital experiences.
               </p>
               <div className="about-footer">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

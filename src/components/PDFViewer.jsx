@@ -1,26 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function PDFViewer({ pdfUrl, isHighRes = false, containerId = 'pdfCanvasList' }) {
+export default function PDFViewer({ pdfUrl, isHighRes = false, containerId = 'pdfCanvasList', onExpand = null }) {
+  const [pdfDoc, setPdfDoc] = useState(null);
+  const [scale, setScale] = useState(isHighRes ? 1.8 : 1.1);
   const [loading, setLoading] = useState(true);
   const [progressMsg, setProgressMsg] = useState('Initializing viewer...');
   const [useFallback, setUseFallback] = useState(false);
+  
   const containerRef = useRef(null);
   const activeTaskRef = useRef(null);
 
-  const isRemote = pdfUrl && (pdfUrl.startsWith('http://') || pdfUrl.startsWith('https://'));
-
+  // Reset scale and document when PDF URL changes
   useEffect(() => {
-    if (isRemote) {
-      setUseFallback(true);
-      setLoading(false);
-      return;
-    }
-
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Clear previous pages
-    container.innerHTML = '';
+    setScale(isHighRes ? 1.8 : 1.1);
+    setPdfDoc(null);
     setLoading(true);
     setProgressMsg('Initializing viewer...');
     setUseFallback(false);
@@ -55,37 +48,11 @@ export default function PDFViewer({ pdfUrl, isHighRes = false, containerId = 'pd
 
     loadingTask.promise
       .then((pdf) => {
+        setPdfDoc(pdf);
         setLoading(false);
-        container.innerHTML = ''; // Ensure container is empty
-
-        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-          const pageWrapper = document.createElement('div');
-          pageWrapper.className = 'pdf-page-wrapper';
-          pageWrapper.addEventListener('contextmenu', (e) => e.preventDefault());
-
-          const canvas = document.createElement('canvas');
-          canvas.className = 'pdf-page-canvas';
-          pageWrapper.appendChild(canvas);
-          container.appendChild(pageWrapper);
-
-          pdf.getPage(pageNum).then((page) => {
-            const ctx = canvas.getContext('2d');
-            const scale = isHighRes ? 2.0 : 1.2;
-            const viewport = page.getViewport({ scale });
-
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-
-            const renderContext = {
-              canvasContext: ctx,
-              viewport: viewport,
-            };
-            page.render(renderContext);
-          });
-        }
       })
       .catch((error) => {
-        console.warn("pdf.js rendering failed. Falling back to native browser iframe.", error);
+        console.warn("pdf.js document loading failed. Falling back to native browser iframe.", error);
         setUseFallback(true);
         setLoading(false);
       });
@@ -95,9 +62,60 @@ export default function PDFViewer({ pdfUrl, isHighRes = false, containerId = 'pd
         activeTaskRef.current.destroy();
       }
     };
-  }, [pdfUrl, isHighRes, isRemote]);
+  }, [pdfUrl, isHighRes]);
 
-  // Handle right click suppression on the preview container
+  // Handle rendering of pages when document or scale changes
+  useEffect(() => {
+    if (!pdfDoc) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Clear previous pages
+    container.innerHTML = '';
+
+    const renderPromises = [];
+
+    for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+      const pageWrapper = document.createElement('div');
+      pageWrapper.className = 'pdf-page-wrapper';
+      pageWrapper.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      const canvas = document.createElement('canvas');
+      canvas.className = 'pdf-page-canvas';
+      pageWrapper.appendChild(canvas);
+      container.appendChild(pageWrapper);
+
+      const renderPromise = pdfDoc.getPage(pageNum).then((page) => {
+        const ctx = canvas.getContext('2d');
+        const viewport = page.getViewport({ scale });
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const renderContext = {
+          canvasContext: ctx,
+          viewport: viewport,
+        };
+        return page.render(renderContext).promise;
+      });
+      
+      renderPromises.push(renderPromise);
+    }
+
+    Promise.all(renderPromises).catch((error) => {
+      console.warn("Error rendering PDF pages:", error);
+    });
+  }, [pdfDoc, scale]);
+
+  const zoomIn = () => {
+    setScale((prev) => Math.min(prev + 0.2, 2.5));
+  };
+
+  const zoomOut = () => {
+    setScale((prev) => Math.max(prev - 0.2, 0.7));
+  };
+
   const handleContextMenu = (e) => {
     e.preventDefault();
   };
@@ -119,7 +137,7 @@ export default function PDFViewer({ pdfUrl, isHighRes = false, containerId = 'pd
       {useFallback ? (
         <iframe
           className="fallback-iframe"
-          src={isRemote ? `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true` : `${pdfUrl}#toolbar=0&navpanes=0`}
+          src={`${pdfUrl}#toolbar=0&navpanes=0`}
           style={{ border: 'none', width: '100%', height: '100%', borderRadius: '8px' }}
           title="PDF Fallback Viewer"
         />
@@ -130,6 +148,47 @@ export default function PDFViewer({ pdfUrl, isHighRes = false, containerId = 'pd
           ref={containerRef}
           style={{ display: loading ? 'none' : 'block' }}
         />
+      )}
+
+      {!loading && !useFallback && pdfDoc && (
+        <div className="pdf-toolbar">
+          <button 
+            className="pdf-toolbar-btn" 
+            onClick={zoomOut} 
+            disabled={scale <= 0.7}
+            title="Zoom Out"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: '14px', height: '14px' }}>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <span className="pdf-zoom-level">{Math.round(scale * 100)}%</span>
+          <button 
+            className="pdf-toolbar-btn" 
+            onClick={zoomIn} 
+            disabled={scale >= 2.5}
+            title="Zoom In"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: '14px', height: '14px' }}>
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          {onExpand && (
+            <>
+              <span className="pdf-toolbar-divider">|</span>
+              <button 
+                className="pdf-toolbar-btn expand-btn" 
+                onClick={onExpand}
+                title="View Full Screen"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: '14px', height: '14px' }}>
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                </svg>
+              </button>
+            </>
+          )}
+        </div>
       )}
     </div>
   );

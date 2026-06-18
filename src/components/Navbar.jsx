@@ -58,7 +58,7 @@ export default function Navbar({ theme, toggleTheme }) {
         ) : (
           <>
             <span className="nav-name">Mousam Vishwakarma</span>
-            <span className="nav-role">UI Motion Designer</span>
+            <span className="nav-role">UI/UX &amp; Motion Designer</span>
           </>
         )}
       </div>

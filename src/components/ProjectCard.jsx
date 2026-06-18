@@ -27,7 +27,6 @@ export default function ProjectCard({ id, project, onClick }) {
   // Badge text mappings matching the original projects.html
   let badgeText = '';
   if (id === 'zero-orbit') badgeText = 'Featured · Web Dev';
-  else if (id === 'fairshare') badgeText = 'UI/UX Design';
   else if (id === 'emr-healthcare') badgeText = 'UI/UX Design';
   else if (id === 'alpa-labs') badgeText = 'UI/UX Design';
   else if (id === 'parkit') badgeText = 'Mobile UI/UX';
@@ -88,7 +87,7 @@ export default function ProjectCard({ id, project, onClick }) {
         onClick={handleCardClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', cursor: 'none' }}
+        style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         {renderMedia()}
         <div className="project-info">

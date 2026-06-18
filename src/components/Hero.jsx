@@ -57,7 +57,7 @@ export default function Hero() {
         </span>
       </h1>
       <p className="hero-roles" ref={rolesRef}>
-        UI Motion Designer · Interaction Designer · Design Technologist
+        UI/UX Designer · UI Motion Designer · Interaction Designer · Design Technologist
       </p>
       <div className="hero-scroll">
         <span className="hero-scroll-text">Scroll</span>

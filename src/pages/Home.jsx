@@ -145,7 +145,7 @@ export default function Home() {
                 <div className="portrait-info">
                   <h2 className="portrait-label" id="portraitHeading">Portrait</h2>
                   <div className="portrait-name">Mousam Vishwakarma</div>
-                  <div className="portrait-role-tag">UI Motion Designer</div>
+                  <div className="portrait-role-tag">UI/UX &amp; Motion Designer</div>
                 </div>
               </div>
             </BentoCard>
@@ -304,7 +304,7 @@ export default function Home() {
               <div className="work-item">
                 <div className="work-item-header">
                   <div>
-                    <div className="work-title">EMR Healthcare Suite</div>
+                    <div className="work-title">EMR Product UI</div>
                     <div className="work-desc">Hospital Network — UI/UX Design System</div>
                   </div>
                   <Link to="/projects?project=emr-healthcare" id="workEMRLink" className="arrow-link" title="View project details">
@@ -317,6 +317,7 @@ export default function Home() {
                   <span className="tag">Figma</span>
                   <span className="tag">UX Research</span>
                   <span className="tag">Information Architecture</span>
+                  <span className="tag">Healthcare Design</span>
                 </div>
               </div>
               <div className="work-item">
@@ -340,7 +341,7 @@ export default function Home() {
               <div className="work-item">
                 <div className="work-item-header">
                   <div>
-                    <div className="work-title">Alpa Labs Corporate Portal</div>
+                    <div className="work-title">Alpa Labs Site UI</div>
                     <div className="work-desc">Alpa Laboratories Ltd. — Corporate Web Portal &amp; UI/UX</div>
                   </div>
                   <Link to="/projects?project=alpa-labs" id="workAlpaLink" className="arrow-link" title="View project details">
@@ -357,7 +358,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="work-more">
-                <Link to="/projects" id="viewAllProjectsLink" style={{ color: 'var(--white)', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 500, cursor: 'none' }}>
+                <Link to="/projects" id="viewAllProjectsLink" style={{ color: 'var(--white)', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 500 }}>
                   <span>View all live projects</span>
                   <span className="arrow-indicator" style={{ fontSize: '14px', transition: 'transform .3s var(--ease-spring)' }}>→</span>
                 </Link>
@@ -395,6 +396,7 @@ export default function Home() {
               <div className="skills-section">
                 <div className="skills-title">Front-End</div>
                 <div className="skills-tags">
+                  <span className="skill-tag">React</span>
                   <span className="skill-tag">HTML5</span>
                   <span className="skill-tag">CSS3 (Flex, Grid)</span>
                   <span className="skill-tag">Keyframes</span>
@@ -406,6 +408,7 @@ export default function Home() {
               <div className="skills-section">
                 <div className="skills-title">Tools</div>
                 <div className="skills-tags">
+                  <span className="skill-tag">Adobe Suite</span>
                   <span className="skill-tag">Adobe Illustrator</span>
                   <span className="skill-tag">Photoshop</span>
                   <span className="skill-tag">Blender</span>

@@ -74,15 +74,7 @@ export default function ProjectModal({ project, onClose }) {
     if (mediaType === 'pdf') {
       return (
         <div className="pdf-preview-box" id="pdfPreviewBox">
-          <PDFViewer pdfUrl={mediaUrl} containerId="previewCanvasList" />
-          <div className="pdf-overlay-trigger" id="pdfOverlayTrigger" onClick={() => setLightboxUrl(mediaUrl)}>
-            <div className="pdf-expand-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: '20px', height: '20px' }}>
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-              <span>View Design in Full Screen</span>
-            </div>
-          </div>
+          <PDFViewer pdfUrl={mediaUrl} containerId="previewCanvasList" onExpand={() => setLightboxUrl(mediaUrl)} />
         </div>
       );
     }
@@ -141,79 +133,15 @@ export default function ProjectModal({ project, onClose }) {
           </button>
           
           <div className="modal-content" id="modalContent">
-            <div className="modal-grid">
-              <div className="modal-details">
+            <div className="modal-layout-stacked">
+              {/* Header section (full width) */}
+              <div className="modal-header-section">
                 <h2 className="modal-title">{title}</h2>
                 <div className="modal-tagline">{tagline}</div>
-
-                <h3 className="modal-section-label">Overview</h3>
-                <div className="modal-info-block">
-                  <div>
-                    <div className="info-cell-title">Client</div>
-                    <div className="info-cell-val">{client}</div>
-                  </div>
-                  <div>
-                    <div className="info-cell-title">Year</div>
-                    <div className="info-cell-val">{year}</div>
-                  </div>
-                  <div style={{ gridColumn: 'span 2', marginTop: '6px' }}>
-                    <div className="info-cell-title">Role</div>
-                    <div className="info-cell-val">{role}</div>
-                  </div>
-                </div>
-
-                <p className="modal-body-text">{description}</p>
-
-                <h3 className="modal-section-label">Challenge</h3>
-                <p className="modal-body-text" style={{ marginBottom: '20px' }}>{challenge}</p>
-
-                <h3 className="modal-section-label">Solution</h3>
-                <p className="modal-body-text" style={{ marginBottom: '28px' }}>{solution}</p>
-
-                {deliverables && deliverables.length > 0 && (
-                  <>
-                    <h3 className="modal-section-label" style={{ marginTop: '24px' }}>Project Files / Deliverables</h3>
-                    <div className="deliverables-grid">
-                      {deliverables.map((d, index) => (
-                        <a
-                          key={index}
-                          href="#"
-                          onClick={(e) => handleDeliverableClick(e, d.url)}
-                          className="deliverable-link"
-                        >
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '14px', height: '14px' }}>
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                          </svg>
-                          <span>{d.name}</span>
-                        </a>
-                      ))}
-                    </div>
-                  </>
-                )}
-
-                <div className="modal-actions">
-                  {liveUrl !== '#' && mediaType !== 'pdf' && (
-                    <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="contact-btn" style={{ marginTop: 0 }}>
-                      {getActionLabel()}
-                    </a>
-                  )}
-                  {mediaType === 'pdf' && (
-                    <button className="contact-btn" onClick={() => setLightboxUrl(mediaUrl)} style={{ marginTop: 0 }}>
-                      View in Full Screen ↗
-                    </button>
-                  )}
-                  <button
-                    className="contact-btn secondary-btn"
-                    onClick={onClose}
-                    style={{ background: 'transparent', color: 'var(--muted)', borderColor: 'var(--border)', marginTop: 0 }}
-                  >
-                    Close Case Study
-                  </button>
-                </div>
               </div>
 
-              <div>
+              {/* Preview section (full width, prominent) */}
+              <div className="modal-preview-section">
                 <div className="modal-section-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span>Media Preview</span>
                   {getMediaHint() && (
@@ -222,13 +150,89 @@ export default function ProjectModal({ project, onClose }) {
                     </span>
                   )}
                 </div>
-                <div className={`modal-visual ${mediaType === 'pdf' ? 'pdf-mode' : ''} ${mediaType === 'iframe' ? 'iframe-mode' : ''}`}>
+                <div className={`modal-visual-large ${mediaType === 'pdf' ? 'pdf-mode' : ''} ${mediaType === 'iframe' ? 'iframe-mode' : ''}`}>
                   {renderMediaPreview()}
                 </div>
-                <div className="tags" style={{ marginTop: '16px', gap: '6px', justifyContent: 'center' }}>
-                  {tools.map((t) => (
-                    <span key={t} className="tag">{t}</span>
-                  ))}
+              </div>
+
+              {/* Details sections (flowing below) */}
+              <div className="modal-details-grid">
+                <div className="modal-details-main">
+                  <h3 className="modal-section-label">Overview</h3>
+                  <p className="modal-body-text">{description}</p>
+
+                  <h3 className="modal-section-label">Challenge</h3>
+                  <p className="modal-body-text" style={{ marginBottom: '20px' }}>{challenge}</p>
+
+                  <h3 className="modal-section-label">Solution</h3>
+                  <p className="modal-body-text" style={{ marginBottom: '28px' }}>{solution}</p>
+                </div>
+
+                <div className="modal-details-sidebar">
+                  <h3 className="modal-section-label">Project Details</h3>
+                  <div className="modal-info-block">
+                    <div>
+                      <div className="info-cell-title">Client</div>
+                      <div className="info-cell-val">{client}</div>
+                    </div>
+                    <div>
+                      <div className="info-cell-title">Year</div>
+                      <div className="info-cell-val">{year}</div>
+                    </div>
+                    <div style={{ gridColumn: 'span 2', marginTop: '6px' }}>
+                      <div className="info-cell-title">Role</div>
+                      <div className="info-cell-val">{role}</div>
+                    </div>
+                  </div>
+
+                  <h3 className="modal-section-label">Tools & Stack</h3>
+                  <div className="tags" style={{ gap: '6px', marginBottom: '28px', justifyContent: 'flex-start' }}>
+                    {tools.map((t) => (
+                      <span key={t} className="tag">{t}</span>
+                    ))}
+                  </div>
+
+                  {deliverables && deliverables.length > 0 && (
+                    <>
+                      <h3 className="modal-section-label">Project Files</h3>
+                      <div className="deliverables-grid" style={{ marginBottom: '28px' }}>
+                        {deliverables.map((d, index) => (
+                          <a
+                            key={index}
+                            href="#"
+                            onClick={(e) => handleDeliverableClick(e, d.url)}
+                            className="deliverable-link"
+                          >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '14px', height: '14px' }}>
+                              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                              <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <span>{d.name}</span>
+                          </a>
+                        ))}
+                      </div>
+                    </>
+                  )}
+
+                  <div className="modal-actions-sidebar">
+                    {liveUrl !== '#' && mediaType !== 'pdf' && (
+                      <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="contact-btn" style={{ width: '100%', justifyContent: 'center', marginTop: 0 }}>
+                        {getActionLabel()}
+                      </a>
+                    )}
+                    {mediaType === 'pdf' && (
+                      <button className="contact-btn" onClick={() => setLightboxUrl(mediaUrl)} style={{ width: '100%', justifyContent: 'center', marginTop: 0 }}>
+                        View in Full Screen ↗
+                      </button>
+                    )}
+                    <button
+                      className="contact-btn secondary-btn"
+                      onClick={onClose}
+                      style={{ width: '100%', justifyContent: 'center', background: 'transparent', color: 'var(--muted)', borderColor: 'var(--border)', marginTop: '8px' }}
+                    >
+                      Close Case Study
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

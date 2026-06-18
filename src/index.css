@@ -29,17 +29,17 @@
     --modal-backdrop: rgba(8, 8, 8, 0.65);
     --modal-shadow: 0 30px 90px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.02);
     --text-shadow-color: rgba(160, 140, 255, 0.12);
-    
+
     /* Button Hovers */
     --btn-hover-border: rgba(255, 255, 255, 0.25);
     --btn-hover-bg: #222;
     --btn-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    
+
     /* Cursor thematic overrides */
     --cursor-ring-border: rgba(255, 255, 255, 0.25);
     --cursor-ring-hover-border: rgba(255, 255, 255, 0.6);
     --cursor-ring-hover-bg: rgba(255, 255, 255, 0.05);
-    
+
     /* Before-After Labels */
     --label-bg: rgba(13, 13, 13, 0.75);
 }
@@ -54,7 +54,7 @@
     --muted2: #6e6e73;
     --white: #000000;
     --green: #10b981;
-    
+
     /* Interactive variables & theme shadows */
     --nav-bg: rgba(240, 240, 243, 0.85);
     --orb-gradient: radial-gradient(ellipse at center, rgba(160, 140, 255, 0.09) 0%, rgba(120, 100, 230, 0.04) 45%, transparent 70%);
@@ -63,17 +63,17 @@
     --modal-backdrop: rgba(240, 240, 240, 0.65);
     --modal-shadow: 0 30px 90px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
     --text-shadow-color: rgba(160, 140, 255, 0.06);
-    
+
     /* Button Hovers */
     --btn-hover-border: rgba(0, 0, 0, 0.15);
     --btn-hover-bg: #e0e0e3;
     --btn-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-    
+
     /* Cursor thematic overrides */
     --cursor-ring-border: rgba(0, 0, 0, 0.18);
     --cursor-ring-hover-border: rgba(0, 0, 0, 0.45);
     --cursor-ring-hover-bg: rgba(0, 0, 0, 0.03);
-    
+
     /* Before-After Labels */
     --label-bg: rgba(250, 250, 250, 0.75);
 }
@@ -89,57 +89,9 @@ body {
     font-size: 14px;
     line-height: 1.5;
     overflow-x: hidden;
-    cursor: none;
 }
 
-/* ── CUSTOM CURSOR ─────────────────────────────────────── */
-.cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    pointer-events: none;
-}
 
-.cursor-dot {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #ffffff;
-    border-radius: 50%;
-    margin-top: -2px;
-    margin-left: -2px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    mix-blend-mode: difference;
-    will-change: transform;
-}
-
-.cursor-ring {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    margin-top: -16px;
-    margin-left: -16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    will-change: transform;
-}
-
-.cursor-ring-inner {
-    width: 100%;
-    height: 100%;
-    border: 1px solid var(--cursor-ring-border);
-    border-radius: 50%;
-    transition: border-color 0.35s ease, background-color 0.35s ease, transform 0.5s var(--ease-spring);
-    transform: scale(1);
-}
-
-.cursor-ring.hovering .cursor-ring-inner {
-    border-color: var(--cursor-ring-hover-border);
-    background-color: var(--cursor-ring-hover-bg);
-    transform: scale(1.6);
-}
 
 /* ── NAV ───────────────────────────────────────────────── */
 nav {
@@ -192,7 +144,6 @@ nav.scrolled {
     background: none;
     border: none;
     color: var(--muted);
-    cursor: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -226,6 +177,7 @@ nav.scrolled {
 }
 
 @keyframes blink {
+
     0%,
     100% {
         opacity: 1;
@@ -266,6 +218,7 @@ nav.scrolled {
 }
 
 @keyframes orbPulse {
+
     0%,
     100% {
         transform: translate(-50%, -52%) scale(1);
@@ -411,6 +364,7 @@ nav.scrolled {
     display: grid;
     gap: 12px;
 }
+
 .top-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 420px;
@@ -557,13 +511,11 @@ nav.scrolled {
 .portrait-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(13, 13, 13, 0.95) 0%,
-        rgba(13, 13, 13, 0.6) 40%,
-        rgba(13, 13, 13, 0.1) 70%,
-        transparent 100%
-    );
+    background: linear-gradient(to top,
+            rgba(13, 13, 13, 0.95) 0%,
+            rgba(13, 13, 13, 0.6) 40%,
+            rgba(13, 13, 13, 0.1) 70%,
+            transparent 100%);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -745,7 +697,6 @@ nav.scrolled {
     margin-top: 8px;
     text-decoration: none;
     display: block;
-    cursor: none;
 }
 
 .dl-meta {
@@ -771,7 +722,6 @@ nav.scrolled {
     border: 1px solid var(--border);
     border-radius: 50%;
     color: var(--muted);
-    cursor: none;
     transition: border-color .3s, color .3s, transform .4s var(--ease-spring);
 }
 
@@ -821,7 +771,6 @@ nav.scrolled {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: none;
     transition: border-color .3s, background .3s, transform .4s var(--ease-spring), box-shadow .3s;
 }
 
@@ -853,7 +802,6 @@ nav.scrolled {
     justify-content: center;
     color: var(--muted);
     text-decoration: none;
-    cursor: none;
     transition: color .25s, transform .4s var(--ease-spring);
 }
 
@@ -1088,7 +1036,6 @@ nav.scrolled {
     color: var(--text);
     text-decoration: none;
     font-family: var(--font);
-    cursor: none;
     transition: border-color .3s, color .3s, background .3s, transform .4s var(--ease-spring), box-shadow .3s;
 }
 
@@ -1303,6 +1250,7 @@ footer {
     .card {
         padding: 20px;
     }
+
     .about-card {
         padding: 24px;
     }
@@ -1328,6 +1276,7 @@ footer {
         align-items: flex-start;
         gap: 12px;
     }
+
     .time-visual {
         align-self: center;
         margin-left: 0;
@@ -1339,17 +1288,18 @@ footer {
     .cursor {
         display: none !important;
     }
-    body, 
-    a, 
-    button, 
-    .card, 
-    .tool-icon-box, 
-    .skill-tag, 
-    .tag, 
-    .contact-btn, 
-    .dl-icon, 
-    .arrow-icon, 
-    .arrow-link, 
+
+    body,
+    a,
+    button,
+    .card,
+    .tool-icon-box,
+    .skill-tag,
+    .tag,
+    .contact-btn,
+    .dl-icon,
+    .arrow-icon,
+    .arrow-link,
     .dl-cv,
     .pdf-overlay-trigger {
         cursor: auto !important;
@@ -1373,7 +1323,6 @@ footer {
     text-decoration: none;
     font-size: 12px;
     font-weight: 500;
-    cursor: none;
     transition: border-color .3s, transform .3s var(--ease-spring), background .3s, color .3s;
 }
 
@@ -1430,7 +1379,6 @@ footer {
     font-size: 13px;
     font-weight: 500;
     font-family: var(--font);
-    cursor: none;
     transition: border-color .3s, color .3s, background .3s, transform .3s var(--ease-spring), box-shadow .3s;
 }
 
@@ -1465,7 +1413,6 @@ footer {
     display: flex;
     flex-direction: column;
     height: 100%;
-    cursor: none;
 }
 
 .project-media {
@@ -1654,7 +1601,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: none;
     z-index: 10003;
     transition: border-color .3s, color .3s, transform .3s;
 }
@@ -1795,7 +1741,6 @@ footer {
     text-decoration: none;
     font-size: 12.5px;
     transition: border-color .3s, color .3s, transform .3s var(--ease-spring);
-    cursor: none;
 }
 
 .deliverable-link:hover {
@@ -1819,6 +1764,102 @@ footer {
 @media (max-width: 600px) {
     .deliverables-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Stacked Modal Layout */
+.modal-layout-stacked {
+    padding: 44px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header-section {
+    margin-bottom: 24px;
+}
+
+.modal-preview-section {
+    margin-bottom: 40px;
+}
+
+.modal-visual-large {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+    aspect-ratio: 16/10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-visual-large video,
+.modal-visual-large .modal-img,
+.modal-visual-large object,
+.modal-visual-large iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: none;
+}
+
+.modal-visual-large.pdf-mode {
+    aspect-ratio: 16/11;
+    height: 620px;
+}
+
+@media (max-width: 768px) {
+    .modal-visual-large.pdf-mode {
+        height: 480px;
+        aspect-ratio: auto;
+    }
+}
+
+.modal-details-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.modal-details-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-details-sidebar {
+    display: flex;
+    flex-direction: column;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 16px;
+    position: sticky;
+    top: 24px;
+}
+
+.modal-actions-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (max-width: 900px) {
+    .modal-layout-stacked {
+        padding: 32px 24px;
+    }
+
+    .modal-details-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .modal-details-sidebar {
+        position: static;
+        padding: 20px;
     }
 }
 
@@ -1865,7 +1906,7 @@ footer {
     background: var(--white);
     cursor: ew-resize;
     z-index: 50;
-    box-shadow: 0 0 10px rgba(255,255,255,0.4);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .before-after-handle-button {
@@ -1926,7 +1967,7 @@ footer {
     .modal-visual {
         order: -1;
     }
-    
+
     .modal-container {
         max-height: 90vh;
     }
@@ -1992,11 +2033,25 @@ footer {
     max-width: 100%;
     box-shadow: var(--shadow-hover);
     background: var(--card);
-    border-radius: 4px;
+    border-radius: 6px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pdfPageFadeIn 0.45s ease forwards;
+}
+
+@keyframes pdfPageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .pdf-page-canvas {
@@ -2005,45 +2060,69 @@ footer {
     display: block;
 }
 
-.pdf-overlay-trigger {
+/* PDF Floating Toolbar Controls */
+.pdf-toolbar {
     position: absolute;
-    inset: 0;
-    background: rgba(13, 13, 13, 0.2);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(18, 18, 18, 0.82);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 6px 14px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.02);
+    z-index: 20;
+    transition: opacity 0.3s ease, transform 0.3s var(--ease-spring);
+    user-select: none;
+}
+
+[data-theme="light"] .pdf-toolbar {
+    background: rgba(240, 240, 243, 0.88);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.01);
+}
+
+.pdf-toolbar-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--muted);
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease, background 0.3s ease;
-    cursor: none;
-    z-index: 10;
+    transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s var(--ease-spring);
 }
 
-.pdf-preview-box:hover .pdf-overlay-trigger {
-    opacity: 1;
-    background: rgba(13, 13, 13, 0.7);
-}
-
-.pdf-expand-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.pdf-toolbar-btn:hover:not(:disabled) {
     color: var(--white);
-    background: rgba(22, 22, 22, 0.9);
-    border: 1px solid var(--border);
-    padding: 14px 24px;
-    border-radius: 30px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transform: translateY(10px);
-    transition: transform 0.3s var(--ease-spring);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: var(--border);
+    transform: scale(1.1);
 }
 
-.pdf-preview-box:hover .pdf-expand-icon {
-    transform: translateY(0);
+.pdf-toolbar-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.pdf-zoom-level {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    min-width: 40px;
+    text-align: center;
+}
+
+.pdf-toolbar-divider {
+    color: var(--border);
+    font-size: 14px;
+    opacity: 0.8;
 }
 
 .pdf-loading {
@@ -2071,7 +2150,9 @@ footer {
 }
 
 @keyframes pdf-spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .pdf-error {
@@ -2119,7 +2200,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: none;
     z-index: 20002;
     transition: border-color .3s, color .3s, transform .3s;
 }

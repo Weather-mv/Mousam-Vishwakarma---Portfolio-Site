@@ -247,7 +247,7 @@ nav.scrolled {
 .hero-name-mousam,
 .hero-name-vishwa {
     display: block;
-    font-size: clamp(72px, 14vw, 192px);
+    font-size: clamp(44px, 12.5vw, 192px);
     font-weight: 900;
     letter-spacing: -0.05em;
     line-height: 0.87;
@@ -1286,7 +1286,7 @@ footer {
 
     .hero-name-mousam,
     .hero-name-vishwa {
-        font-size: 22vw;
+        font-size: 12.5vw;
     }
 
     .projects-page nav .nav-divider,

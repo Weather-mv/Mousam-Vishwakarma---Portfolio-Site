@@ -289,5 +289,132 @@ export const PROJECTS_DATA = {
         mediaType: "video",
         mediaUrl: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783683542/Hive_Curtain_Raiser_-_9_Final_With_Music_jrgglh.mp4",
         posterUrl: ""
+    },
+    "motion-k12-edtech": {
+        title: "k12 Motion graphics",
+        tagline: "18 educational math animation videos edited for K-12 EdTech learning.",
+        client: "Vaidik Eduservices Pvt. Ltd.",
+        year: "2025",
+        role: "Motion & Video Designer",
+        tools: ["After Effects", "Premiere Pro", "Illustrator", "Motion Graphics"],
+        description: "A comprehensive series of educational lessons designed to make complex mathematical and logical concepts accessible to young learners (Kindergarten, 1st Grade, and 2nd Grade).",
+        challenge: "Translating dry mathematical procedures—such as place value partitions, subtraction word problems, and pattern completions—into highly engaging, step-by-step videos that children can follow easily.",
+        solution: "Edited and animated a library of 18 lessons utilizing colorful vector geometry, clear highlight cues, friendly character spacing, and precise audio-visual synchronization to guide attention.",
+        liveUrl: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709450/M_1_Place_value_models_with_tens_and_ones_100_to_120_FDZ_-_11-12-2025_agcadg.mp4",
+        mediaType: "video",
+        mediaUrl: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709450/M_1_Place_value_models_with_tens_and_ones_100_to_120_FDZ_-_11-12-2025_agcadg.mp4",
+        posterUrl: "assets/images/motion-prev.png",
+        deliverables: [],
+        isVideoPlaylist: true,
+        playlist: [
+            {
+                id: "k12-1",
+                title: "Place Value Models with Tens & Ones (100 to 120)",
+                grade: "1st Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709450/M_1_Place_value_models_with_tens_and_ones_100_to_120_FDZ_-_11-12-2025_agcadg.mp4"
+            },
+            {
+                id: "k12-2",
+                title: "Subtraction Word Problems up to Two Digits",
+                grade: "2nd Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709455/M_2_Subtraction_word_problems_up_to_two_digits_UFU_-_24-12-2025_qwud47.mp4"
+            },
+            {
+                id: "k12-3",
+                title: "Add Doubles: Complete the Sentence",
+                grade: "2nd Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709462/M_2_Add_doubles_complete_the_sentence_S46_-_02-12-2025_kgmzco.mp4"
+            },
+            {
+                id: "k12-4",
+                title: "Find the Next Shape in a Pattern",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709466/M_K_Find_the_next_shape_in_a_pattern_8N9_-_18-09-2025_qqq44e.mp4"
+            },
+            {
+                id: "k12-5",
+                title: "Which Tally Chart is Correct?",
+                grade: "1st Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709473/M_1_Which_tally_chart_is_correct__XRL_-31-10-2025_jbbnyu.mp4"
+            },
+            {
+                id: "k12-6",
+                title: "Add and Subtract Numbers up to 100",
+                grade: "2nd Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709476/M_2_Add_and_subtract_numbers_up_to_100_JDT_-_23-12-2025_wy3jvv.mp4"
+            },
+            {
+                id: "k12-7",
+                title: "Shape Patterns",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709480/M_K_Shape_patterns_UBM_-_16-09-2025_ahvtby.mp4"
+            },
+            {
+                id: "k12-8",
+                title: "Add Two Digit Numbers (Sums to 200)",
+                grade: "2nd Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709483/M_2_Add_two_digit_numbers_sums_to_200_GZY_-_27-12-2025_zvfqq6.mp4"
+            },
+            {
+                id: "k12-9",
+                title: "Choose the Number That You Hear (Up to 10)",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709486/M_K_Choose_the_number_that_you_hear_-_up_to_10_9C9_-_03-10-2025_oi4oj6.mp4"
+            },
+            {
+                id: "k12-10",
+                title: "Triangles Definition",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709486/M_K_Triangles_N6Y_-_18-09-2025_xt3icv.mp4"
+            },
+            {
+                id: "k12-11",
+                title: "Vaidik EdTech Motion Graphic Review (v3)",
+                grade: "Review Pipeline",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709486/v3_correction_qtdoxa.mp4"
+            },
+            {
+                id: "k12-12",
+                title: "Count Tens and Ones (Up to 20)",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709490/M_K_Count_tens_and_ones_-_up_to_20_JLP_-_19-09-2025_hbgmm6.mp4"
+            },
+            {
+                id: "k12-13",
+                title: "Subtract Two Digit Numbers with Regrouping",
+                grade: "2nd Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709491/M_2_Subtract_two_digit_numbers_with_regrouping_TWE_-_26-12-2025_a32sqa.mp4"
+            },
+            {
+                id: "k12-14",
+                title: "Find Different Ways to Make a Number",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709496/M_K_Find_different_ways_to_make_a_number_AZ7_-_18-09-2025_e145bw.mp4"
+            },
+            {
+                id: "k12-15",
+                title: "One Less with Pictures (Up to 10)",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709494/M_K_One_less_with_pictures_-_up_to_10_KUP_-_18-09-2025_sffsxv.mp4"
+            },
+            {
+                id: "k12-16",
+                title: "Create Bar Graphs",
+                grade: "2nd Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709505/M_2_Create_bar_graphs_6KD_-_28-10-2025_d0jg1j.mp4"
+            },
+            {
+                id: "k12-17",
+                title: "Count by Tens (Up to 120)",
+                grade: "Kindergarten",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709515/M_K_Count_by_tens_-_up_to_120_YNS_-_18-09-2025_slm3vl.mp4"
+            },
+            {
+                id: "k12-18",
+                title: "Add and Subtract Numbers up to 1,000",
+                grade: "2nd Grade",
+                url: "https://res.cloudinary.com/dk8c2tqwo/video/upload/v1783709519/M_2_Add_and_subtract_numbers_up_to_1_000_WXQ_-_13-09-2025_qivaud.mp4"
+            }
+        ]
     }
 };

@@ -72,8 +72,8 @@ export default function ProjectCard({ id, project, onClick }) {
           />
         )}
         
-        <div className="video-card-hover-overlay">
-          <div className="video-card-play-btn">
+        <div className="video-card-hover-overlay" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px', textAlign: 'center' }}>
+          <div className="video-card-play-btn" style={{ marginBottom: '12px' }}>
             {isVideoCard ? (
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="6 4 20 12 6 20 6 4"></polygon>
@@ -85,6 +85,8 @@ export default function ProjectCard({ id, project, onClick }) {
               </svg>
             )}
           </div>
+          <h4 style={{ color: '#fff', fontSize: '15px', fontWeight: 600, margin: '4px 0', letterSpacing: '-0.02em', textTransform: 'none' }}>{title}</h4>
+          <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '11px', margin: 0, maxWidth: '220px', lineHeight: '1.4' }}>{tagline}</p>
         </div>
       </div>
     );

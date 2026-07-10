@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { PROJECTS_DATA } from '../data/projectsData';
 import ProjectCard from '../components/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
 
 export default function Projects() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('all');
   const [displayFilter, setDisplayFilter] = useState('all'); // To update items after grid fade out
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -58,7 +59,11 @@ export default function Projects() {
   };
 
   const handleCardClick = (id) => {
-    setSearchParams({ project: id });
+    if (id === 'motion-k12-edtech') {
+      navigate('/k12-videos');
+    } else {
+      setSearchParams({ project: id });
+    }
   };
 
   const handleModalClose = () => {

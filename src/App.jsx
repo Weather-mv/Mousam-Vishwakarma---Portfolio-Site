@@ -7,6 +7,7 @@ import CustomCursor from './components/CustomCursor';
 // Lazy load heavy page components for better initial bundle size
 const Home = lazy(() => import('./pages/Home'));
 const Projects = lazy(() => import('./pages/Projects'));
+const K12Videos = lazy(() => import('./pages/K12Videos'));
 
 // ── SCROLL TO TOP ROUTE TRANSITION ─────────────────────
 function ScrollToTop() {
@@ -118,6 +119,7 @@ export default function App() {
       }>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/k12-videos" element={<K12Videos />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Suspense>

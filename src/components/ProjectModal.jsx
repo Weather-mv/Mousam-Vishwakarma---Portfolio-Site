@@ -2,8 +2,75 @@ import React, { useState, useEffect } from 'react';
 import CompareSlider from './CompareSlider';
 import PDFViewer from './PDFViewer';
 
+// Sub-component for interactive playlist rendering
+function VideoPlaylist({ playlist, activeVideo, onSelectVideo }) {
+  const [filter, setFilter] = useState('All');
+
+  const categories = ['All', 'Kindergarten', '1st Grade', '2nd Grade', 'Review Pipeline'];
+
+  const filteredPlaylist = playlist.filter((video) => {
+    if (filter === 'All') return true;
+    return video.grade === filter;
+  });
+
+  return (
+    <div className="playlist-widget">
+      {/* Category Tabs */}
+      <div className="playlist-tabs">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`playlist-tab-btn ${filter === cat ? 'active' : ''}`}
+            onClick={() => setFilter(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Playlist Grid */}
+      <div className="playlist-grid">
+        {filteredPlaylist.map((video, idx) => {
+          const isActive = activeVideo && activeVideo.id === video.id;
+          return (
+            <div
+              key={video.id}
+              className={`playlist-item-card ${isActive ? 'active' : ''}`}
+              onClick={() => onSelectVideo(video)}
+            >
+              <div className="playlist-item-thumbnail">
+                <div className="thumbnail-icon">
+                  {isActive ? (
+                    <span className="playing-pulse-container">
+                      <span className="playing-pulse-dot"></span>
+                    </span>
+                  ) : (
+                    <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '12px', height: '12px' }}>
+                      <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                    </svg>
+                  )}
+                </div>
+                <div className="thumbnail-badge">{video.grade}</div>
+              </div>
+              <div className="playlist-item-details">
+                <span className="playlist-item-num">Lesson {idx + 1}</span>
+                <h4 className="playlist-item-title">{video.title}</h4>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectModal({ project, onClose }) {
   const [lightboxUrl, setLightboxUrl] = useState(null);
+  const [activeVideo, setActiveVideo] = useState(() => {
+    return project.isVideoPlaylist && project.playlist && project.playlist.length > 0
+      ? project.playlist[0]
+      : null;
+  });
 
   const {
     title,
@@ -55,6 +122,18 @@ export default function ProjectModal({ project, onClose }) {
   }, [lightboxUrl, onClose]);
 
   const renderMediaPreview = () => {
+    if (project.isVideoPlaylist && activeVideo) {
+      return (
+        <video 
+          key={activeVideo.id}
+          src={activeVideo.url} 
+          autoPlay 
+          controls 
+          playsInline 
+          style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#000', display: 'block' }}
+        ></video>
+      );
+    }
     if (mediaType === 'video') {
       return (
         <video src={mediaUrl} poster={posterUrl} autoPlay loop muted playsInline controls></video>
@@ -395,6 +474,27 @@ export default function ProjectModal({ project, onClose }) {
                           </div>
                         </div>
                       </section>
+                    </div>
+                  ) : project.isVideoPlaylist ? (
+                    <div className="video-playlist-container">
+                      <div className="playlist-info-header" style={{ marginBottom: '20px' }}>
+                        <h3 className="modal-section-label">Interactive Lesson Playlist</h3>
+                        <p className="playlist-instruction" style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: '1.5' }}>
+                          Click on any video card below to load the animated lesson into the video player above. There are 18 edited videos in this series.
+                        </p>
+                      </div>
+                      
+                      <VideoPlaylist 
+                        playlist={project.playlist} 
+                        activeVideo={activeVideo} 
+                        onSelectVideo={(video) => {
+                          setActiveVideo(video);
+                          const modalContent = document.getElementById('modalContent');
+                          if (modalContent) {
+                            modalContent.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }} 
+                      />
                     </div>
                   ) : (
                     <>

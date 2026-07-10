@@ -16,20 +16,21 @@ export const PROJECTS_DATA = {
         deliverables: []
     },
     "emr-healthcare": {
-        title: "EMR Product UI",
-        tagline: "Electronic Medical Records dashboard system designed for clinical workflow efficiency.",
-        client: "Hospital Network Client",
+        title: "Alpha EMR Case Study",
+        tagline: "Designing an AI-Powered EMR & Clinic Management System",
+        client: "AlphaNext Technology Solutions Pvt. Ltd.",
         year: "2026",
-        role: "Lead UI/UX Designer",
-        tools: ["Figma", "UX Research", "Information Architecture", "Healthcare Design"],
-        description: "A high-density clinical dashboard system optimized for doctor speed and patient chart analysis. Designed with visual hierarchy frameworks to reduce cognitive fatigue during long hospital shifts, featuring dark mode telemetry grids, vital sign history tracking, and patient check-in queues.",
-        challenge: "Displaying extremely high-density clinical data (vital signs, lab reports, historical medication, active conditions) on a single screen without causing cognitive overload or critical reading errors.",
-        solution: "Structured a tabbed widget panel system in Figma with color-coded critical status indicators. Used high-contrast typography, strict layout grids, and a dark mode interface to improve visual speed and reduce fatigue.",
+        role: "UI/UX Designer",
+        tools: ["Figma", "UX Research", "Information Architecture", "Wireframing", "UI Design", "Design Systems", "AI Transcription"],
+        description: "Alpha EMR is a cloud-based electronic medical records (EMR) and clinic management platform built by AlphaNext Technology Solutions for independent doctors and small clinics. It features Alpha Echo, an AI voice-to-notes transcription assistant that automates clinical summaries.",
+        challenge: "Solo practitioners running small clinics were stuck choosing between paper files (inefficient retrieval) and legacy hospital software (bloated, expensive, and complex). They needed a simple, consumer-app-like experience that keeps patients' histories searchable, saves time on clinical documentation, and requires minutes to learn.",
+        solution: "Designed a lightweight clinic dashboard with a clean sidebar architecture, featuring Alpha Echo—a one-tap voice-to-notes transcription interface. Built a consolidated patient profile, centralized prescriptions, booking queues, and an intuitive staff onboarding system.",
         liveUrl: "https://res.cloudinary.com/dk8c2tqwo/image/upload/v1781777322/EMR_Product_11zon_bkudqs.pdf",
         mediaType: "pdf",
         mediaUrl: "https://res.cloudinary.com/dk8c2tqwo/image/upload/v1781777322/EMR_Product_11zon_bkudqs.pdf",
         posterUrl: "assets/images/emr_preview.png",
-        deliverables: []
+        deliverables: [],
+        hasRichCaseStudy: true
     },
     "alpa-labs": {
         title: "Alpa Labs Site UI",

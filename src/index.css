@@ -3054,3 +3054,303 @@ body.lightbox-open {
         gap: 0;
     }
 }
+
+/* ── RICH CASE STUDY ───────────────────────────────────── */
+.rich-case-study {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.cs-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cs-header {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+}
+
+.cs-text {
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 0 !important;
+}
+
+.cs-text strong {
+    color: var(--white);
+}
+
+.cs-overview-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.cs-highlight-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.2s var(--ease-spring), border-color 0.2s ease;
+}
+
+.cs-highlight-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--btn-hover-border);
+}
+
+.cs-highlight-title {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--green);
+}
+
+.cs-highlight-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.4;
+}
+
+.cs-callout-box {
+    background: rgba(0, 210, 255, 0.03);
+    border-left: 3px solid var(--green);
+    border-radius: 4px 12px 12px 4px;
+    padding: 20px;
+    margin: 16px 0;
+}
+
+.cs-callout-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.cs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 20px;
+    color: var(--text);
+}
+
+.cs-list li {
+    line-height: 1.5;
+}
+
+.cs-list li strong {
+    color: var(--white);
+}
+
+.cs-goals-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.cs-goal-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.cs-goal-number {
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cs-goal-content {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.cs-goal-content strong {
+    color: var(--white);
+}
+
+.cs-ia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.cs-ia-grid .cs-ia-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cs-ia-grid .cs-ia-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.cs-ia-grid .cs-ia-card.highlighted {
+    background: rgba(0, 210, 255, 0.02);
+    border-color: rgba(0, 210, 255, 0.2);
+}
+
+.cs-ia-grid .cs-ia-card.highlighted h5 {
+    color: var(--green);
+}
+
+.cs-ia-grid .cs-ia-card h5 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.cs-ia-grid .cs-ia-card p {
+    font-size: 12px;
+    color: var(--muted2);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.cs-screens-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 8px;
+}
+
+.cs-screen-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.cs-screen-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cs-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 20px;
+    margin-top: 12px;
+    color: var(--text);
+}
+
+.cs-bullets li {
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+.cs-bullets li strong {
+    color: var(--white);
+}
+
+.cs-design-system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.cs-ds-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.cs-ds-card strong {
+    display: block;
+    font-size: 13.5px;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.cs-ds-card p {
+    font-size: 12.5px;
+    color: var(--muted2);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.cs-takeaways-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-takeaway-card {
+    display: flex;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cs-takeaway-card:hover {
+    transform: translateX(4px);
+    border-color: rgba(0, 210, 255, 0.15);
+}
+
+.cs-takeaway-num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green);
+    opacity: 0.8;
+}
+
+.cs-takeaway-body h5 {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.cs-takeaway-body p {
+    font-size: 13px;
+    color: var(--muted2);
+    line-height: 1.4;
+    margin: 0;
+}

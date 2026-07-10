@@ -34,52 +34,63 @@ export default function ProjectCard({ id, project, onClick }) {
   else if (id.startsWith('motion-')) badgeText = 'Motion Design';
   else if (id.startsWith('demo-')) badgeText = 'Motion Design';
 
-  const renderMedia = () => {
-    if (mediaType === 'video') {
-      return (
-        <div className="project-media">
-          <video
-            ref={videoRef}
-            src={mediaUrl}
-            poster={posterUrl}
-            loop
-            muted
-            playsInline
-          />
-          <div className="play-overlay">
-            <div className="play-icon-box">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </div>
-          {badgeText && <span className="project-badge">{badgeText}</span>}
-        </div>
-      );
-    }
+  const isVideoCard = mediaType === 'video' || mediaType === 'iframe';
 
-    const imgSource = mediaType === 'slider' ? afterImg : (mediaType === 'pdf' || mediaType === 'iframe' || mediaType === 'image' ? posterUrl : mediaUrl);
+  const renderMedia = () => {
+    const isDirectVideo = mediaType === 'video';
+    const imgSource = mediaType === 'slider' ? afterImg : (mediaType === 'pdf' || mediaType === 'image' ? posterUrl : mediaUrl);
 
     return (
-      <div className="project-media">
-        <img src={imgSource} alt={title} className="project-thumbnail" />
-        {mediaType === 'iframe' && (
-          <div className="play-overlay">
-            <div className="play-icon-box">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </div>
+      <div className="project-media visual-only-media-wrapper" style={{ height: '100%', width: '100%', position: 'relative' }}>
+        {isVideoCard ? (
+          isDirectVideo ? (
+            <video
+              ref={videoRef}
+              src={mediaUrl}
+              poster={posterUrl}
+              loop
+              muted
+              playsInline
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ) : (
+            <img 
+              src={posterUrl} 
+              alt={title} 
+              className="project-thumbnail" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          )
+        ) : (
+          <img 
+            src={imgSource} 
+            alt={title} 
+            className="project-thumbnail" 
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         )}
-        {badgeText && <span className="project-badge">{badgeText}</span>}
+        
+        <div className="video-card-hover-overlay">
+          <div className="video-card-play-btn">
+            {isVideoCard ? (
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="6 4 20 12 6 20 6 4"></polygon>
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            )}
+          </div>
+        </div>
       </div>
     );
   };
 
   return (
     <BentoCard
-      className="project-card"
+      className="project-card visual-only-project-card"
       id={`project-card-${id}`}
       style={{ display: 'flex' }}
     >
@@ -90,19 +101,6 @@ export default function ProjectCard({ id, project, onClick }) {
         style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         {renderMedia()}
-        <div className="project-info">
-          <div className="project-meta-row">
-            <span className="project-client">{client}</span>
-            <span className="project-year">{year}</span>
-          </div>
-          <h3 className="project-card-title">{title}</h3>
-          <p className="project-card-desc">{tagline}</p>
-          <div className="tags">
-            {tools.map((t) => (
-              <span key={t} className="tag">{t}</span>
-            ))}
-          </div>
-        </div>
       </div>
     </BentoCard>
   );

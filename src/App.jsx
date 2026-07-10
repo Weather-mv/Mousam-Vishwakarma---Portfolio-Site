@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Projects from './pages/Projects';
 import CustomCursor from './components/CustomCursor';
+
+// Lazy load heavy page components for better initial bundle size
+const Home = lazy(() => import('./pages/Home'));
+const Projects = lazy(() => import('./pages/Projects'));
 
 // ── SCROLL TO TOP ROUTE TRANSITION ─────────────────────
 function ScrollToTop() {
@@ -95,10 +97,30 @@ export default function App() {
       <ScrollProgress />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-      </Routes>
+      <Suspense fallback={
+        <div style={{
+          minHeight: '100vh',
+          background: '#000',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <div style={{
+            width: 36,
+            height: 36,
+            border: '2.5px solid #1a1a2e',
+            borderTop: '2.5px solid #00d2ff',
+            borderRadius: '50%',
+            animation: 'spin 0.7s linear infinite',
+          }} />
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        </div>
+      }>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
 
       <Footer />
     </Router>

@@ -4,13 +4,22 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Navbar({ theme, toggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [time, setTime] = useState('--:-- --');
-  const location = useLocation();
-  const isProjectsPage = location.pathname === '/projects';
+  const [activeSection, setActiveSection] = useState('workSection');
 
   useEffect(() => {
-    // 1. Scroll listener for floating effect
+    // 1. Scroll listener for floating effect & Active Section spy
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      const workEl = document.getElementById('workSection');
+      const aboutEl = document.getElementById('aboutSection');
+      const y = window.scrollY + 180; // Offset
+
+      if (aboutEl && y >= aboutEl.offsetTop) {
+        setActiveSection('aboutSection');
+      } else {
+        setActiveSection('workSection');
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -37,30 +46,36 @@ export default function Navbar({ theme, toggleTheme }) {
   return (
     <nav id="mainNav" className={scrolled ? 'scrolled' : ''}>
       <div className="nav-left">
-        {isProjectsPage ? (
-          <>
-            <Link to="/" className="nav-back-btn" id="navBackBtn">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                style={{ width: '14px', height: '14px', transform: 'translateY(1px)' }}
-              >
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
-              <span>Back to Home</span>
-            </Link>
-            <span className="nav-divider" style={{ opacity: 0.15, margin: '0 4px' }}>|</span>
-            <span className="nav-name">Mousam Vishwakarma</span>
-          </>
-        ) : (
-          <>
-            <span className="nav-name">Mousam Vishwakarma</span>
-            <span className="nav-role">UI/UX &amp; Motion Designer</span>
-          </>
-        )}
+        <Link to="/" className="nav-logo" id="navLogo" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
+          <span className="nav-name">Mousam Vishwakarma</span>
+          <span className="nav-role">UI/UX &amp; Motion Designer</span>
+        </Link>
+      </div>
+      <div className="nav-center" id="navCenterMenu">
+        <a 
+          href="#workSection" 
+          className={`nav-link ${activeSection === 'workSection' ? 'active' : ''}`} 
+          id="navLinkWork"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById('workSection');
+            if (el) window.scrollTo({ top: el.offsetTop - 90, behavior: 'smooth' });
+          }}
+        >
+          Work
+        </a>
+        <a 
+          href="#aboutSection" 
+          className={`nav-link ${activeSection === 'aboutSection' ? 'active' : ''}`} 
+          id="navLinkAbout"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById('aboutSection');
+            if (el) window.scrollTo({ top: el.offsetTop - 90, behavior: 'smooth' });
+          }}
+        >
+          About &amp; Career
+        </a>
       </div>
       <div className="nav-right">
         <span className="nav-city">Indore ·</span>

@@ -234,7 +234,7 @@ export default function Hero({ onViewProject, isVisible }) {
                     muted
                     playsInline
                     autoPlay
-                    preload="none"
+                    preload="auto"
                     className="floating-card-video"
                   />
                 ) : (

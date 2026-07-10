@@ -19,6 +19,8 @@ export default function ProjectCard({ id, project, onClick }) {
   };
 
   const handleCardClick = (e) => {
+    // Guard: e.target must be an Element (not text node / SVG / document)
+    if (!(e.target instanceof Element)) { onClick(id); return; }
     // Prevent triggering overlay click if clicking elements in tags or anchor links
     if (e.target.closest('.tags') || e.target.closest('.arrow-link')) return;
     onClick(id);

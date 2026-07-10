@@ -28,6 +28,7 @@ export default function CustomCursor() {
     };
 
     const handleMouseEnter = (e) => {
+      if (!(e.target instanceof Element)) return;
       const target = e.target.closest('a, button, .card, .tool-icon-box, .skill-tag, .tag, .contact-btn, .dl-icon, .arrow-icon, .deliverable-link');
       if (target && ringRef.current) {
         ringRef.current.classList.add('hovering');
@@ -35,6 +36,7 @@ export default function CustomCursor() {
     };
 
     const handleMouseLeave = (e) => {
+      if (!(e.target instanceof Element)) return;
       const target = e.target.closest('a, button, .card, .tool-icon-box, .skill-tag, .tag, .contact-btn, .dl-icon, .arrow-icon, .deliverable-link');
       if (target && ringRef.current) {
         ringRef.current.classList.remove('hovering');

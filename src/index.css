@@ -2471,15 +2471,16 @@ body.lightbox-open {
     position: relative;
     z-index: 5;
     padding: 20px;
-    background: rgba(6, 6, 6, 0.25);
-    backdrop-filter: blur(10px);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.02);
+    /* No background box — text floats cleanly on black */
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+    border: none;
 }
 
 [data-theme="light"] .hero-center-content {
-    background: rgba(240, 240, 243, 0.3);
-    border-color: rgba(0, 0, 0, 0.03);
+    background: transparent;
+    border-color: transparent;
 }
 
 .hero-center-name {
@@ -2571,30 +2572,31 @@ body.lightbox-open {
 }
 
 .floating-card-glass {
-    background: rgba(26, 26, 26, 0.35);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(18, 18, 20, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 18px;
-    padding: 10px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.04);
     transition: transform 0.4s var(--ease-spring), border-color 0.3s, box-shadow 0.3s;
 }
 
 [data-theme="light"] .floating-card-glass {
-    background: rgba(255, 255, 255, 0.4);
-    border-color: rgba(0, 0, 0, 0.06);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
 .floating-card-item:hover .floating-card-glass {
     transform: scale(1.06) translateY(-6px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(160, 140, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 210, 255, 0.1);
 }
 
 [data-theme="light"] .floating-card-item:hover .floating-card-glass {
     border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .floating-card-img {
@@ -2724,13 +2726,13 @@ body.lightbox-open {
 }
 
 .pos-hero-11 {
-    left: 33%;
-    top: 5%;
+    left: 32%;
+    top: 4%;
 }
 
 .pos-hero-12 {
-    right: 33%;
-    top: 5%;
+    right: 32%;
+    top: 4%;
 }
 
 /* Float Animations Keyframes */

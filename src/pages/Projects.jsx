@@ -121,7 +121,7 @@ export default function Projects() {
 
         {/* PROJECTS GRID */}
         <div
-          className="projects-grid reveal d2"
+          className="projects-masonry reveal d2"
           id="projectsGrid"
           style={{
             transition: 'opacity .3s ease, transform .3s cubic-bezier(.16, 1, .3, 1)',
@@ -129,11 +129,14 @@ export default function Projects() {
             transform: isTransitioning ? 'translateY(10px)' : 'translateY(0)',
           }}
         >
-          {filteredProjects.map(([id, project]) => (
+          {filteredProjects.map(([id, project], index) => (
             <ProjectCard
               key={id}
               id={id}
-              project={project}
+              project={{
+                ...project,
+                isSpan2: index % 3 === 0
+              }}
               onClick={handleCardClick}
             />
           ))}

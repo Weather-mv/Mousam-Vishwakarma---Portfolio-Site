@@ -6,6 +6,7 @@ import CustomCursor from './components/CustomCursor';
 
 // Lazy load heavy page components for better initial bundle size
 const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
 const K12Videos = lazy(() => import('./pages/K12Videos'));
 
@@ -42,14 +43,29 @@ function ScrollProgress() {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
-  });
-
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  // ── LENIS SMOOTH MOMENTUM SCROLL ────────────────────────
+  useEffect(() => {
+    import('lenis').then(({ default: Lenis }) => {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+      window.lenis = lenis;
+    });
+  }, []);
 
   // ── VISITOR ACCESS EMAIL ALERT ─────────────────────────
   useEffect(() => {
@@ -87,16 +103,12 @@ export default function App() {
     }
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
   return (
     <Router>
       <CustomCursor />
       <ScrollToTop />
       <ScrollProgress />
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      <Navbar />
       
       <Suspense fallback={
         <div style={{
@@ -119,6 +131,7 @@ export default function App() {
       }>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/k12-videos" element={<K12Videos />} />
           <Route path="*" element={<Home />} />
         </Routes>

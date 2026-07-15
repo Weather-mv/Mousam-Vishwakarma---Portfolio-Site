@@ -1,22 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import BentoCard from './BentoCard';
 
 export default function ProjectCard({ id, project, onClick }) {
   const { title, tagline, client, year, tools, mediaType, mediaUrl, posterUrl, afterImg } = project;
   const videoRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    if (mediaType === 'video' && videoRef.current) {
+  useEffect(() => {
+    if (videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
-  };
-
-  const handleMouseLeave = () => {
-    if (mediaType === 'video' && videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  };
+  }, []);
 
   const handleCardClick = (e) => {
     // Guard: e.target must be an Element (not text node / SVG / document)
@@ -26,7 +19,7 @@ export default function ProjectCard({ id, project, onClick }) {
     onClick(id);
   };
 
-  // Badge text mappings matching the original projects.html
+  // Badge text mappings
   let badgeText = '';
   if (id === 'zero-orbit') badgeText = 'Featured · Web Dev';
   else if (id === 'emr-healthcare') badgeText = 'UI/UX Design';
@@ -34,7 +27,10 @@ export default function ProjectCard({ id, project, onClick }) {
   else if (id === 'parkit') badgeText = 'Mobile UI/UX';
   else if (id === 'kids-site-design') badgeText = 'UI/UX Design';
   else if (id.startsWith('motion-')) badgeText = 'Motion Design';
-  else if (id.startsWith('demo-')) badgeText = 'Motion Design';
+  else if (id.startsWith('demo-')) badgeText = 'Product Demo';
+  else if (id.startsWith('showcase-')) badgeText = '3D Showcase';
+  else if (id.startsWith('intro-')) badgeText = 'Brand Motion';
+  else if (id.startsWith('explainer-')) badgeText = 'Explainer Video';
 
   const isVideoCard = mediaType === 'video' || mediaType === 'iframe';
 
@@ -43,7 +39,7 @@ export default function ProjectCard({ id, project, onClick }) {
     const imgSource = mediaType === 'slider' ? afterImg : (mediaType === 'pdf' || mediaType === 'image' ? posterUrl : mediaUrl);
 
     return (
-      <div className="project-media visual-only-media-wrapper" style={{ height: '100%', width: '100%', position: 'relative' }}>
+      <div className="project-media visual-only-media-wrapper" style={{ width: '100%', position: 'relative' }}>
         {isVideoCard ? (
           isDirectVideo ? (
             <video
@@ -53,6 +49,7 @@ export default function ProjectCard({ id, project, onClick }) {
               loop
               muted
               playsInline
+              autoPlay
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           ) : (
@@ -71,40 +68,25 @@ export default function ProjectCard({ id, project, onClick }) {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         )}
-        
-        <div className="video-card-hover-overlay" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '20px', textAlign: 'center' }}>
-          <div className="video-card-play-btn" style={{ marginBottom: '12px' }}>
-            {isVideoCard ? (
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="6 4 20 12 6 20 6 4"></polygon>
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-            )}
-          </div>
-          <h4 style={{ color: '#fff', fontSize: '15px', fontWeight: 600, margin: '4px 0', letterSpacing: '-0.02em', textTransform: 'none' }}>{title}</h4>
-          <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '11px', margin: 0, maxWidth: '220px', lineHeight: '1.4' }}>{tagline}</p>
-        </div>
       </div>
     );
   };
 
   return (
     <BentoCard
-      className="project-card visual-only-project-card"
+      className={`project-card visual-only-project-card ${project.isSpan2 ? 'span-2' : ''}`}
       id={`project-card-${id}`}
-      style={{ display: 'flex' }}
+      style={{ display: 'flex', flexDirection: 'column' }}
     >
       <div
         onClick={handleCardClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
+        style={{ width: '100%', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
       >
         {renderMedia()}
+        <div className="project-info-under">
+          <h4 className="project-title-under">{title}</h4>
+          <p className="project-tagline-under">{badgeText} &middot; {year}</p>
+        </div>
       </div>
     </BentoCard>
   );

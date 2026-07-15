@@ -123,8 +123,8 @@ nav {
     left: 0;
     right: 0;
     z-index: 100;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 30px 48px;
     transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
@@ -137,19 +137,136 @@ nav.scrolled {
     border-color: var(--border);
 }
 
-.nav-left {
+.nav-logo-container {
+    flex: 1;
     display: flex;
     justify-content: flex-start;
 }
 
-.nav-center {
+.nav-brand-logo {
+    color: var(--white) !important;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    font-family: var(--font);
+    transition: opacity 0.3s ease;
+}
+
+nav.scrolled .nav-brand-logo {
+    color: var(--text) !important;
+}
+
+.nav-desktop-links {
     display: flex;
+    align-items: center;
+    gap: 32px;
     justify-content: center;
 }
 
-.nav-right {
+.nav-right-actions {
+    flex: 1;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Hamburger Mobile Button */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    z-index: 101;
+    color: var(--white);
+    transition: transform 0.3s ease;
+}
+
+nav.scrolled .hamburger-btn {
+    color: var(--text);
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.hamburger-btn.open .hamburger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-btn.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.open .hamburger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Mobile Menu Fullscreen Drawer Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .mobile-menu-overlay {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .mobile-menu-overlay {
+    background: rgba(9, 9, 11, 0.95);
+    backdrop-filter: blur(20px);
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.mobile-menu-link {
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link.active {
+    color: var(--green);
+    transform: scale(1.05);
 }
 
 .nav-link {
@@ -2453,7 +2570,7 @@ body.lightbox-open {
 .hero-scroll-track {
     height: 170vh;
     position: relative;
-    background: #3c7588; /* Matches the user's portrait background */
+    background: #000000; /* Replaced #3c7588 with black background */
     z-index: 5;
 }
 
@@ -2466,7 +2583,7 @@ body.lightbox-open {
     justify-content: center;
     padding: 0;
     overflow: hidden;
-    background: #3c7588;
+    background: #000000; /* Replaced #3c7588 with black background */
     text-align: center;
 }
 
@@ -2482,9 +2599,19 @@ body.lightbox-open {
     z-index: 1;
     pointer-events: none;
     will-change: transform;
+    filter: brightness(0.65);
+}
+
+.hero-video-overlay-wrapper {
+    display: contents;
+}
+
+.hero-video-overlay-content {
+    display: contents;
 }
 
 /* Content Layout (3-Column overlay) */
+/* Content Layout (Centered Overlay) */
 .hero-grid-container {
     position: relative;
     width: calc(100% - 96px);
@@ -2493,33 +2620,32 @@ body.lightbox-open {
     height: 100%;
     z-index: 2;
     padding: 100px 0 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    grid-template-rows: 1fr 120px;
-}
-
-/* Left Column: Name Title */
-/* Left Column: Name Title */
-.hero-left-col {
-    text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Centered Column: Name & Roles */
+.hero-center-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 38vh; /* Positions name even lower down to clear top 60% of video */
     will-change: transform, opacity;
-    padding-left: clamp(40px, 8vw, 150px);
-    padding-right: 20px;
-    padding-bottom: 70px;
 }
 
 .hero-name-first {
-    color: #8ed6e6; /* Soft cyan name color */
+    color: #ffffff; /* White name color */
 }
 
 .hero-name-title {
-    font-size: clamp(48px, 6vw, 92px);
+    display: inline-block;
+    width: max-content;
+    text-align: center;
+    font-size: clamp(40px, 4.8vw, 76px);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.04em;
@@ -2527,58 +2653,60 @@ body.lightbox-open {
     text-transform: none;
     font-family: var(--font);
     cursor: pointer;
+    mix-blend-mode: difference;
+    margin-bottom: 16px; /* Space directly below name */
 }
 
 .hero-name-first,
 .hero-name-last {
     display: inline-block;
-    transition: letter-spacing 0.5s cubic-bezier(.16, 1, .3, 1), transform 0.5s cubic-bezier(.16, 1, .3, 1);
-}
-
-.hero-name-title:hover .hero-name-first,
-.hero-name-title:hover .hero-name-last {
-    letter-spacing: 0.08em;
+    transition: transform 0.5s cubic-bezier(.16, 1, .3, 1);
 }
 
 .hero-name-last {
     color: #ffffff;
 }
 
-/* Right Column: Roles List */
-.hero-right-col {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    height: 100%;
-    will-change: transform, opacity;
-    padding-right: clamp(40px, 8vw, 150px);
-    padding-left: 20px;
-    padding-bottom: 70px;
-}
-
-.hero-roles-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-start;
-}
-
-.hero-role-item {
-    font-size: clamp(20px, 2.5vw, 34px);
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+.hero-roles-line {
+    font-size: clamp(12px, 1.3vw, 18px);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.05em;
+    line-height: 1.25;
     font-family: var(--font);
-    display: inline-block;
+    text-align: center;
+    mix-blend-mode: difference;
     cursor: pointer;
-    transition: letter-spacing 0.5s cubic-bezier(.16, 1, .3, 1);
 }
 
-.hero-role-item:hover {
-    letter-spacing: 0.06em;
+/* Word thickness hover effect (prevents layout shifting using ::after width trick) */
+.hover-thick-word {
+    display: inline-block;
+    position: relative;
+    font-weight: inherit;
+    transition: font-weight 0.4s cubic-bezier(.16, 1, .3, 1), 
+                transform 0.4s cubic-bezier(.16, 1, .3, 1),
+                -webkit-text-stroke 0.4s cubic-bezier(.16, 1, .3, 1);
+    will-change: font-weight, transform;
+}
+
+.hover-thick-word::after {
+    display: block;
+    content: attr(data-text);
+    font-weight: 900;
+    -webkit-text-stroke: 1.2px currentColor;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+}
+
+.hover-thick-word:hover {
+    font-weight: 900 !important;
+    -webkit-text-stroke: 1.2px currentColor;
+    transform: scale(1.08) translateY(-1px);
+    color: var(--white, #ffffff);
 }
 
 /* Bottom Row: Description */
@@ -2598,13 +2726,14 @@ body.lightbox-open {
 }
 
 .hero-description-text {
-    font-size: clamp(14px, 1.25vw, 19px);
+    font-size: clamp(12px, 1.1vw, 15px);
     line-height: 1.55;
     color: #ffffff;
     font-weight: 500;
     max-width: 900px;
     text-align: center;
     font-family: var(--font);
+    mix-blend-mode: difference;
 }
 
 /* ── ADAPTIVE HEADER NAVIGATION (hero-mode) ── */
@@ -2620,109 +2749,121 @@ nav.hero-mode {
         padding: 100px 0 60px;
     }
     .hero-name-title {
-        font-size: clamp(48px, 7.5vw, 90px);
+        font-size: clamp(38px, 6.2vw, 70px);
     }
-    .hero-role-item {
-        font-size: clamp(13px, 1.5vw, 15px);
+    .hero-roles-line {
+        font-size: clamp(12px, 1.3vw, 16px);
     }
 }
 
 @media (max-width: 768px) {
+    .hamburger-btn {
+        display: flex;
+    }
+    .nav-desktop-links {
+        display: none;
+    }
+    nav {
+        padding: 16px 24px !important;
+    }
     .hero-scroll-track {
-        height: 100vh;
+        height: auto;
+        background: #000000;
     }
     .hero-pdf-section {
         position: relative;
-        height: 100vh;
-        align-items: flex-start;
-        padding-top: 120px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background: #000000;
+        padding-top: 90px;
+        padding-bottom: 40px;
+    }
+    /* Wrapper on mobile to absolute-position name/roles over the inline video */
+    .hero-video-overlay-wrapper {
+        position: relative;
+        display: block;
+        width: calc(100% - 32px);
+        margin: 0 auto 24px auto;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #000000;
     }
     .hero-portrait-image {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 100%;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none !important;
         width: 100%;
-        object-fit: cover;
+        height: auto;
+        max-height: 45vh;
+        object-fit: contain;
+        display: block;
         opacity: 0.65;
+        filter: brightness(0.65);
+    }
+    .hero-video-overlay-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Align at the bottom of the video frame */
+        align-items: center;
+        text-align: center;
+        z-index: 2;
+        padding: 16px 16px 20px 16px; /* Small padding at the bottom */
     }
     .hero-grid-container {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        padding: 0 24px 60px;
-        gap: 20px;
+        padding: 0;
+        gap: 0;
         width: 100%;
+        height: auto;
         max-width: none;
         margin: 0;
-        grid-template-rows: auto;
-    }
-    .hero-left-col {
-        text-align: center;
-        align-items: center;
-        height: auto;
-        margin-top: 2vh;
-        padding-right: 0;
-    }
-    .hero-year-label {
-        font-size: 16px;
-        margin-bottom: 8px;
+        z-index: 2;
     }
     .hero-name-title {
         text-align: center;
-        font-size: clamp(40px, 10vw, 72px);
+        font-size: clamp(16px, 5vw, 22px); /* Smaller font size on video bottom */
+        margin-bottom: 4px;
+        width: 100%;
     }
-    .hero-right-col {
-        text-align: center;
-        align-items: center;
-        height: auto;
-        padding-left: 0;
-        margin-top: 10px;
+    .hero-roles-line {
+        font-size: clamp(8px, 1.8vw, 9.5px); /* Smaller font size on video bottom */
+        width: 100%;
     }
-    .hero-roles-list {
-        align-items: center;
-        gap: 4px;
-    }
-    .hero-role-item {
-        font-size: clamp(13px, 3.5vw, 15px);
-    }
+    /* Safe block container for the description at the bottom */
     .hero-bottom-row {
         position: relative;
-        bottom: auto;
+        bottom: auto; /* Reset desktop's bottom shift to keep text below the video frame */
         left: auto;
-        transform: none;
+        transform: none !important; /* Prevent scroll event overrides */
         width: 100%;
-        margin-top: 20px;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+        padding: 0 24px;
+        text-align: center;
     }
     .hero-description-text {
-        font-size: 13px;
+        font-size: 12px;
         text-align: center;
-        max-width: 100%;
-    }
-    nav.hero-mode {
-        padding: 20px 5%;
-        display: flex;
-        justify-content: space-between;
-        max-width: none;
         width: 100%;
-        left: 0;
-        transform: none;
-    }
-    nav.hero-mode .nav-left {
-        display: flex;
-        justify-content: flex-start;
-    }
-    nav.hero-mode .nav-center {
-        position: static;
-        transform: none;
-        display: flex;
-        justify-content: center;
-    }
-    nav.hero-mode .nav-right {
-        display: flex;
-        justify-content: flex-end;
-        padding-left: 0;
+        max-width: 100%;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+        mix-blend-mode: difference;
+        display: inline-block;
+        margin: 0 auto;
     }
 }
 
@@ -2976,10 +3117,9 @@ nav.hero-mode {
         padding: 0 16px !important;
     }
 
-    /* Mobile Navbar — Keep clean 3-column layout */
+    /* Mobile Navbar overrides */
     nav {
-        padding: 16px 24px;
-        grid-template-columns: 1fr 1fr 1fr;
+        padding: 16px 24px !important;
     }
 }
 
